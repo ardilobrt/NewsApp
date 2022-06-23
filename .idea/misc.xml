@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/button_background.xml" value="0.1595" />
+        <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.1675929884566054" />
+        <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/layout/layout_example.xml" value="0.1675929884566054" />
+        <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/layout/layout_example_guide.xml" value="0.1675929884566054" />
         <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1945" />
         <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1945" />
       </map>
