@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AndNews.Button" parent="Theme.AndNews">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="fontFamily">@font/sfprodisplaymedium</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextContent" parent="Theme.AndNews">
+        <item name="android:layout_width">216dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/sfprodisplaybold</item>
+    </style>
+
+    <style name="TextContent.Title" parent="TextContent">
+        <item name="android:textColor">@color/black_primary</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextContent.Description" parent="TextContent">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textColor">@color/grey_primary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>
