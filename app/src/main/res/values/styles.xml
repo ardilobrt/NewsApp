@@ -5,7 +5,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
         <item name="android:layout_margin">16dp</item>
-        <item name="android:background">@drawable/button_background</item>
+        <item name="android:background">@drawable/ic_button_background</item>
         <item name="fontFamily">@font/sfprodisplaymedium</item>
         <item name="textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
