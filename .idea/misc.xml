@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_bottom_home.xml" value="0.1145" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_button_background.xml" value="0.1145" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_edt_background.xml" value="0.1145" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_image_background.xml" value="0.1145" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_search.xml" value="0.1145" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/fragment_bookmark.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/item_news.xml" value="0.2" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/layout_example_guide.xml" value="0.20416666666666666" />
         <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/button_background.xml" value="0.1595" />
         <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.1675929884566054" />
         <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/layout/layout_example.xml" value="0.1675929884566054" />
