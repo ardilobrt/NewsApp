@@ -26,14 +26,18 @@
         <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/custom_email_icon.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/custom_lock_icon.xml" value="0.208" />
+        <entry key="app/src/main/res/drawable/custom_person_icon.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/ic_button_background.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/ic_email_disable.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/ic_input_auth.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/ic_lock.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/ic_lock_disable.xml" value="0.208" />
+        <entry key="app/src/main/res/drawable/ic_person.xml" value="0.208" />
+        <entry key="app/src/main/res/drawable/ic_person_disable.xml" value="0.208" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.2446194371433123" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.3196134484332541" />
         <entry key="app/src/main/res/layout/fragment_bookmark.xml" value="0.15896739130434784" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/layout_example_guide.xml" value="0.20040269934612764" />

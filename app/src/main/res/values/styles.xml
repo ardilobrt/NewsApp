@@ -12,7 +12,7 @@
     </style>
 
     <style name="TextContent" parent="Theme.AndNews">
-        <item name="android:layout_width">216dp</item>
+        <item name="android:layout_width">336dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
@@ -47,6 +47,10 @@
         <item name="android:background">@drawable/ic_input_auth</item>
         <item name="android:drawablePadding">16dp</item>
         <item name="android:padding">16dp</item>
+    </style>
+    
+    <style name="BottomTextNavigation" parent="Theme.AndNews">
+    
     </style>
 
 </resources>
