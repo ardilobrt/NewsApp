@@ -26,7 +26,7 @@
   <EditText
       style="@style/TextInput"
       android:id="@+id/input_email"
-      android:drawableStart="@drawable/ic_email"
+      android:drawableStart="@drawable/custom_email_icon"
       android:hint="@string/email"
       android:inputType="textEmailAddress"
       app:layout_constraintStart_toStartOf="@+id/text_sub_title"
@@ -35,7 +35,7 @@
   <EditText
       style="@style/TextInput"
       android:id="@+id/input_password"
-      android:drawableStart="@drawable/ic_lock"
+      android:drawableStart="@drawable/custom_lock_icon"
       android:hint="@string/password"
       android:inputType="textPassword"
       app:layout_constraintStart_toStartOf="@+id/input_email"
