@@ -23,7 +23,7 @@ class BookmarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val bookmarkViewModel =
-            ViewModelProvider(this).get(BookmarkViewModel::class.java)
+            ViewModelProvider(this)[BookmarkViewModel::class.java]
 
         _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         val root: View = binding.root
