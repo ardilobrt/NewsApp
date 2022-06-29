@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/purple_primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.AndNews</item>
+    </style>
 
     <style name="Theme.AndNews.Button" parent="Theme.AndNews">
         <item name="android:layout_width">match_parent</item>
@@ -52,5 +58,7 @@
     <style name="BottomTextNavigation" parent="Theme.AndNews">
     
     </style>
+
+
 
 </resources>
