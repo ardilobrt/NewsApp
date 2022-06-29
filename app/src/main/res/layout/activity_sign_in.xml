@@ -5,5 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.auth.SignInActivity">
+  
+  <TextView
+      style="@style/TextContent.Title"
+      android:id="@+id/text_sign_in"
+      android:layout_marginTop="28dp"
+      android:layout_marginStart="20dp"
+      android:text="@string/title_welcome_back"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+  
+  <TextView
+      style="@style/TextContentSubTitle.Description"
+      android:id="@+id/text_sub_title"
+      android:layout_marginTop="8dp"
+      android:text="@string/sub_title_welcome_back"
+      app:layout_constraintStart_toStartOf="@+id/text_sign_in"
+      app:layout_constraintTop_toBottomOf="@id/text_sign_in" />
+  
+  <EditText
+      style="@style/TextInput"
+      android:id="@+id/input_email"
+      android:drawableStart="@drawable/ic_email"
+      android:hint="@string/email"
+      android:inputType="textEmailAddress"
+      app:layout_constraintStart_toStartOf="@+id/text_sub_title"
+      app:layout_constraintTop_toBottomOf="@+id/text_sub_title" />
+  
+  <EditText
+      style="@style/TextInput"
+      android:id="@+id/input_password"
+      android:drawableStart="@drawable/ic_lock"
+      android:hint="@string/password"
+      android:inputType="textPassword"
+      app:layout_constraintStart_toStartOf="@+id/input_email"
+      app:layout_constraintTop_toBottomOf="@+id/input_email" />
+  
+  <TextView
+      android:id="@+id/btn_forgot_password"
+      style="@style/TextContentSubTitle.Description"
+      android:layout_margin="16dp"
+      android:gravity="end"
+      android:text="@string/forgot_password"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/input_password" />
+  
+  <Button
+      style="@style/Theme.AndNews.Button"
+      android:id="@+id/btn_sign_in"
+      android:text="@string/btn_sign_in"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/btn_forgot_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
