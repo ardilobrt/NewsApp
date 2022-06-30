@@ -12,8 +12,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_item_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="105dp"
+            android:layout_height="105dp"
             android:layout_margin="16dp"
             android:contentDescription="@string/content_desc"
             android:src="@drawable/item_sample"
@@ -34,6 +34,8 @@
             android:id="@+id/tv_item_title"
             style="@style/TextContent.ItemTitle"
             android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="3"
             android:text="@string/item_title"
             card_view:layout_constraintBottom_toBottomOf="@+id/iv_item_image"
             card_view:layout_constraintEnd_toEndOf="parent"
