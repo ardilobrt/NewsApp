@@ -16,33 +16,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_title">
+        app:layout_constraintStart_toStartOf="@+id/home_title"
+        app:layout_constraintTop_toBottomOf="@+id/home_title"
+        app:startIconDrawable="@drawable/ic_search">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_layout"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_edt_background"
-                android:textColor="@color/grey_primary"
-                android:hint="@string/search_news"
-                android:inputType="text"
-                android:fontFamily="@font/sfprodisplayregular"
-                android:maxLines="1"/>
-        </com.google.android.material.textfield.TextInputLayout>
-    </FrameLayout>
+            android:background="@drawable/ic_edt_background"
+            android:fontFamily="@font/sfprodisplaymedium"
+            android:hint="@string/search_news"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/grey_dark" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_news"
@@ -50,7 +46,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/input_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
