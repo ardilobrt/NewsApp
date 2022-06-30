@@ -9,6 +9,6 @@
     <string name="search_news">Search News</string>
     <string name="content_desc">Content Desc</string>
     <string name="discover">Discover things of this world</string>
-    <string name="item_category">Android Developer</string>
+    <string name="item_source">Antaranews.com</string>
     <string name="item_title">A Simple Trick For Creating Color Palettes Quickly</string>
 </resources>
