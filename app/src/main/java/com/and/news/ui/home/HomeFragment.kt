@@ -6,20 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.and.news.R
 import com.and.news.adapter.ArticlesAdapter
 import com.and.news.data.MyCompanion.showLoading
 import com.and.news.data.model.ArticlesItem
 import com.and.news.databinding.FragmentHomeBinding
-import com.faltenreich.skeletonlayout.applySkeleton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<HomeViewModel>()
+    private lateinit var list: List<ArticlesItem>
+    private val adapter get() = ArticlesAdapter(list)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +48,12 @@ class HomeFragment : Fragment() {
         viewModel.setArticles()
 
         binding.srlNews.setOnRefreshListener {
-            viewModel.setArticles()
+            lifecycleScope.launch{
+                delay(2000)
+                withContext(Dispatchers.Main) {
+                    getArticles(list)
+                }
+            }
         }
 
         viewModel.listArticles.observe(viewLifecycleOwner) {
@@ -57,7 +67,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getArticles(listArticles: List<ArticlesItem>) {
-        val adapter = ArticlesAdapter(listArticles)
+        list = listArticles
         adapter.setList()
         binding.rvNews.adapter = adapter
         binding.srlNews.isRefreshing = false
