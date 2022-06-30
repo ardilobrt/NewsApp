@@ -40,6 +40,10 @@
             android:textColor="@color/grey_dark" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <include
+        android:id="@+id/include_progress_bar"
+        layout="@layout/layout_progress_bar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_news"
         android:layout_width="match_parent"

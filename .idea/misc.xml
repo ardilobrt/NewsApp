@@ -7,12 +7,14 @@
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/custom_lock_icon.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/custom_person_icon.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_bottom_bookmark.xml" value="0.1145" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_bottom_profile.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_email.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_email_disable.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_input_auth.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_lock.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_lock_disable.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_person_disable.xml" value="0.1145" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/progress_bar_color.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.16944444444444445" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_sign_in.xml" value="0.20416666666666666" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_sign_up.xml" value="0.20416666666666666" />
@@ -20,6 +22,7 @@
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/item_news.xml" value="0.20416666666666666" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/layout_example_guide.xml" value="0.16944444444444445" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/layout_progress_bar.xml" value="0.20416666666666666" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/button_background.xml" value="0.1595" />
         <entry key="..\:/My Documents/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.1675929884566054" />
