@@ -16,8 +16,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_item_image"
-                android:layout_width="105dp"
-                android:layout_height="105dp"
+                android:layout_width="109dp"
+                android:layout_height="109dp"
                 android:layout_margin="16dp"
                 android:contentDescription="@string/content_desc"
                 android:src="@drawable/item_sample"
