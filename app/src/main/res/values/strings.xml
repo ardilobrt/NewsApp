@@ -3,9 +3,14 @@
     <string name="title">First To Know</string>
     <string name="description">All news in one place, be the first to know last news</string>
     <string name="btn_next">Next</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Browse News</string>
     <string name="title_bookmark">Bookmark</string>
     <string name="title_profile">Profile</string>
+    <string name="search_news">Search News</string>
+    <string name="content_desc">Content Desc</string>
+    <string name="discover">Discover things of this world</string>
+    <string name="item_source">Antaranews.com</string>
+    <string name="item_title">A Simple Trick For Creating Color Palettes Quickly</string>
     <string name="title_welcome_sign_up">Welcome to And News</string>
     <string name="sub_title_welcome_sign_up">Hello, I guess you are new around here. You can start using the feature inside the app after sign up</string>
     <string name="title_welcome_back">Welcome Back</string>
