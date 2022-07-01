@@ -30,7 +30,8 @@
       android:hint="@string/email"
       android:inputType="textEmailAddress"
       app:layout_constraintStart_toStartOf="@+id/text_sub_title"
-      app:layout_constraintTop_toBottomOf="@+id/text_sub_title" />
+      app:layout_constraintTop_toBottomOf="@+id/text_sub_title"
+      android:autofillHints="" />
   
   <EditText
       style="@style/TextInput"
@@ -39,7 +40,8 @@
       android:hint="@string/email"
       android:inputType="textEmailAddress"
       app:layout_constraintStart_toStartOf="@+id/input_user_name"
-      app:layout_constraintTop_toBottomOf="@+id/input_user_name" />
+      app:layout_constraintTop_toBottomOf="@+id/input_user_name"
+      android:autofillHints="" />
   
   <EditText
       style="@style/TextInput"
@@ -48,11 +50,12 @@
       android:hint="@string/password"
       android:inputType="textPassword"
       app:layout_constraintStart_toStartOf="@+id/input_email"
-      app:layout_constraintTop_toBottomOf="@+id/input_email" />
+      app:layout_constraintTop_toBottomOf="@+id/input_email"
+      android:autofillHints="" />
   
   <Button
       style="@style/Theme.AndNews.Button"
-      android:id="@+id/btn_sign_in"
+      android:id="@+id/btn_sign_up"
       android:text="@string/btn_sign_up"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"

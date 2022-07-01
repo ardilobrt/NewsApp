@@ -30,7 +30,8 @@
       android:hint="@string/email"
       android:inputType="textEmailAddress"
       app:layout_constraintStart_toStartOf="@+id/text_sub_title"
-      app:layout_constraintTop_toBottomOf="@+id/text_sub_title" />
+      app:layout_constraintTop_toBottomOf="@+id/text_sub_title"
+      android:autofillHints="" />
   
   <EditText
       style="@style/TextInput"
@@ -39,7 +40,8 @@
       android:hint="@string/password"
       android:inputType="textPassword"
       app:layout_constraintStart_toStartOf="@+id/input_email"
-      app:layout_constraintTop_toBottomOf="@+id/input_email" />
+      app:layout_constraintTop_toBottomOf="@+id/input_email"
+      android:autofillHints="" />
   
   <TextView
       android:id="@+id/btn_forgot_password"

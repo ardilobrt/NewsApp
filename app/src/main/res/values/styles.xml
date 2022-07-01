@@ -63,14 +63,8 @@
         <item name="android:padding">16dp</item>
     </style>
 
-    <style name="BottomTextNavigation" parent="Theme.AndNews">
-
-    </style>
-
     <style name="TextContent.ItemCategory" parent="TextContent.Description">
         <item name="android:textSize">18sp</item>
     </style>
-
-
 
 </resources>
