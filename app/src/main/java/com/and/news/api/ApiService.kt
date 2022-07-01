@@ -13,6 +13,6 @@ interface ApiService {
     @GET("v2/top-headlines")
     fun getNewsByLocal(
         @Query("country") country: String,
-        @Query("apiKey") apikey: String = MyCompanion.API_KEY
+        @Query("apiKey") apikey: String = BuildConfig.APP_KEY
     ) : Call<ArticlesResponse>
 }
