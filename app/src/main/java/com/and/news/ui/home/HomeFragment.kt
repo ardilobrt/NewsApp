@@ -23,8 +23,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<HomeViewModel>()
-    private lateinit var list: List<ArticlesItem>
-    private val adapter get() = ArticlesAdapter(list)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +49,7 @@ class HomeFragment : Fragment() {
             lifecycleScope.launch{
                 delay(2000)
                 withContext(Dispatchers.Main) {
-                    getArticles(list)
+                    viewModel.setArticles()
                 }
             }
         }
@@ -66,10 +64,8 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun getArticles(listArticles: List<ArticlesItem>) {
-        list = listArticles
-        adapter.setList()
-        binding.rvNews.adapter = adapter
+    private fun getArticles(listArticles: ArrayList<ArticlesItem>) {
+        binding.rvNews.adapter = ArticlesAdapter(listArticles)
         binding.srlNews.isRefreshing = false
     }
 

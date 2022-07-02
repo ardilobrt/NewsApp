@@ -7,14 +7,8 @@ import com.and.news.data.MyCompanion.loadImage
 import com.and.news.databinding.ItemNewsBinding
 import com.and.news.data.model.ArticlesItem
 
-class ArticlesAdapter(private val listArticles: List<ArticlesItem>) :
+class ArticlesAdapter(private val listArticles: ArrayList<ArticlesItem>) :
     RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
-
-    fun setList() {
-        val list = ArrayList<ArticlesItem>()
-        list.clear()
-        list.addAll(listArticles)
-    }
 
     inner class ViewHolder(private var binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {

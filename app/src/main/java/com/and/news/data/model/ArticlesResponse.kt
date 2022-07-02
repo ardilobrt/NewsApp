@@ -11,7 +11,7 @@ data class ArticlesResponse(
 	val totalResults: Int,
 
 	@field:SerializedName("articles")
-	val articles: List<ArticlesItem>,
+	val articles: ArrayList<ArticlesItem>,
 
 	@field:SerializedName("status")
 	val status: String
