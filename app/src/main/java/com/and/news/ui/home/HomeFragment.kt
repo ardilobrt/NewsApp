@@ -1,9 +1,11 @@
 package com.and.news.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,6 +15,7 @@ import com.and.news.adapter.ArticlesAdapter
 import com.and.news.data.MyCompanion.showLoading
 import com.and.news.data.model.ArticlesItem
 import com.and.news.databinding.FragmentHomeBinding
+import com.and.news.ui.detail.DetailNewsActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -65,7 +68,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun getArticles(listArticles: ArrayList<ArticlesItem>) {
-        binding.rvNews.adapter = ArticlesAdapter(listArticles)
+        binding.rvNews.adapter = ArticlesAdapter(listArticles) {
+            Intent(this.context, DetailNewsActivity::class.java).also {
+                startActivity(it)
+            }
+        }
         binding.srlNews.isRefreshing = false
     }
 
