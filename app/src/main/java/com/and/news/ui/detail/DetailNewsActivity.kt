@@ -22,7 +22,7 @@ class DetailNewsActivity : AppCompatActivity() {
         binding = ActivityDetailNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setActionBar()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val articles =
             intent.getParcelableExtra<ArticlesItem>(MyCompanion.EXTRA_ARTICLES) as ArticlesItem
@@ -45,10 +45,6 @@ class DetailNewsActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun setActionBar() {
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onSupportNavigateUp(): Boolean {
