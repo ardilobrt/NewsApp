@@ -9,7 +9,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
 
-object MyObject {
+object MyCompanion {
 
     const val EXTRA_ARTICLES = "extra_articles"
 
