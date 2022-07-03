@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
         viewModel.setArticles()
 
         binding.srlNews.setOnRefreshListener {
+            binding.edtSearch.clearFocus()
             lifecycleScope.launch {
                 delay(2000)
                 withContext(Dispatchers.Main) {
@@ -75,6 +76,11 @@ class HomeFragment : Fragment() {
             }
         }
         binding.srlNews.isRefreshing = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.edtSearch.clearFocus()
     }
 
     override fun onDestroyView() {
