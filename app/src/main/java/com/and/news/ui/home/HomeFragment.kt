@@ -1,10 +1,13 @@
 package com.and.news.ui.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -50,6 +53,7 @@ class HomeFragment : Fragment() {
 
         binding.srlNews.setOnRefreshListener {
             binding.edtSearch.clearFocus()
+            hideKeyboard()
             lifecycleScope.launch {
                 delay(2000)
                 withContext(Dispatchers.Main) {
@@ -66,6 +70,12 @@ class HomeFragment : Fragment() {
             binding.rvNews.showLoading(it)
         }
 
+    }
+
+    private fun hideKeyboard() {
+        val inputMethodManager =
+            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
 
     private fun getArticles(listArticles: ArrayList<ArticlesItem>) {
