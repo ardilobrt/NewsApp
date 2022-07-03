@@ -14,7 +14,7 @@
     <string name="detail_description" translatable="false">Description</string>
     <string name="detail_content">The characteristics of a lung infection vary, depending on several factors. For example, age, overall health condition, to the causative factors</string>
     <string name="empty_content">Sorry the content has not been loaded by the news source</string>
-    <string name="link"><u>For more information, click the this link</u></string>
+    <string name="link"><u>For more information, click this link</u></string>
     <string name="title_welcome_sign_up" translatable="false">Welcome to And News</string>
     <string name="sub_title_welcome_sign_up" translatable="false">Hello, I guess you are new around here. You can start using the feature inside the app after sign up</string>
     <string name="title_welcome_back" translatable="false">Welcome Back</string>

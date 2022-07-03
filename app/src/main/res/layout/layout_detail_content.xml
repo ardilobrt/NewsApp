@@ -26,8 +26,9 @@
     <TextView
         android:id="@+id/tv_link"
         style="@style/TextContent.Description"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:textColor="@color/black_light"
-        android:layout_marginTop="16dp"
         android:text="@string/link"
         app:layout_constraintStart_toStartOf="@+id/tv_content"
         app:layout_constraintTop_toBottomOf="@+id/tv_content" />
