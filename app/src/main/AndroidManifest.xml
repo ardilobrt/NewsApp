@@ -16,18 +16,17 @@
         android:theme="@style/Theme.AndNews"
         tools:targetApi="31">
         <activity
+            android:name=".WebActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.detail.DetailNewsActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme.ActionBar.Transparent"/>
-
+            android:exported="false" />
         <activity
             android:name=".ui.auth.SignInActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.auth.SignUpActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"

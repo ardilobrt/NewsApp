@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.and.news.adapter.ArticlesAdapter
+import com.and.news.data.MyCompanion
 import com.and.news.data.MyCompanion.showLoading
 import com.and.news.data.model.ArticlesItem
 import com.and.news.databinding.FragmentHomeBinding
@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         viewModel.setArticles()
 
         binding.srlNews.setOnRefreshListener {
-            lifecycleScope.launch{
+            lifecycleScope.launch {
                 delay(2000)
                 withContext(Dispatchers.Main) {
                     viewModel.setArticles()
@@ -68,8 +68,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun getArticles(listArticles: ArrayList<ArticlesItem>) {
-        binding.rvNews.adapter = ArticlesAdapter(listArticles) {
+        binding.rvNews.adapter = ArticlesAdapter(listArticles) { articles ->
             Intent(this.context, DetailNewsActivity::class.java).also {
+                it.putExtra(MyCompanion.EXTRA_ARTICLES, articles)
                 startActivity(it)
             }
         }
