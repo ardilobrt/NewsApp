@@ -19,7 +19,7 @@ class ArticlesAdapter(
         fun bind(articles: ArticlesItem) {
             binding.apply {
                 ivItemImage.loadImage(articles.urlToImage)
-                tvItemSource.text = articles.source.name
+                tvItemSource.text = articles.source?.name
                 tvItemTitle.text = articles.title
             }
         }
