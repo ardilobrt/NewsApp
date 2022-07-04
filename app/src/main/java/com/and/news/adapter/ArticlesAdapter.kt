@@ -7,7 +7,10 @@ import com.and.news.data.MyCompanion.loadImage
 import com.and.news.databinding.ItemNewsBinding
 import com.and.news.data.model.ArticlesItem
 
-class ArticlesAdapter(private val listArticles: ArrayList<ArticlesItem>) :
+class ArticlesAdapter(
+    private val listArticles: ArrayList<ArticlesItem>,
+    val onItemClick: (ArticlesItem) -> Unit
+) :
     RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     inner class ViewHolder(private var binding: ItemNewsBinding) :
@@ -16,7 +19,7 @@ class ArticlesAdapter(private val listArticles: ArrayList<ArticlesItem>) :
         fun bind(articles: ArticlesItem) {
             binding.apply {
                 ivItemImage.loadImage(articles.urlToImage)
-                tvItemSource.text = articles.source.name
+                tvItemSource.text = articles.source?.name
                 tvItemTitle.text = articles.title
             }
         }
@@ -29,6 +32,10 @@ class ArticlesAdapter(private val listArticles: ArrayList<ArticlesItem>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = listArticles[position]
+        holder.itemView.setOnClickListener{
+            onItemClick(item)
+        }
         holder.bind(listArticles[position])
     }
 

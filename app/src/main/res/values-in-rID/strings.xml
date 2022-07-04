@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">And News</string>
+    <string name="link"><u>Infomasi lebih lanjut, klik link berikut ini</u></string>
+    <string name="item_title">Nyeri Badan Hingga Sakit di Dada, Sederet Ciri-Ciri Infeksi Paru yang Kerap Tak Disadari</string>
+    <string name="detail_content">Ciri-ciri infeksi paru bervariasi, tergantung dari beberapa faktor. Misalnya usia, kondisi kesehatan keseluruhan, hingga faktor penyebabnys</string>
+    <string name="empty_content">Maaf konten belum dimuat oleh pihak sumber berita</string>
+    <string name="title_home">Cari Berita</string>
+    <string name="discover">Temukan hal-hal lain dari dunia ini</string>
+    <string name="search_news">Cari Berita</string>
+</resources>

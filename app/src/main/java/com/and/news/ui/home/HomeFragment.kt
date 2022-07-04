@@ -1,18 +1,24 @@
 package com.and.news.ui.home
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.and.news.adapter.ArticlesAdapter
+import com.and.news.data.MyCompanion
 import com.and.news.data.MyCompanion.showLoading
 import com.and.news.data.model.ArticlesItem
 import com.and.news.databinding.FragmentHomeBinding
+import com.and.news.ui.detail.DetailNewsActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -46,7 +52,9 @@ class HomeFragment : Fragment() {
         viewModel.setArticles()
 
         binding.srlNews.setOnRefreshListener {
-            lifecycleScope.launch{
+            binding.edtSearch.clearFocus()
+            hideKeyboard()
+            lifecycleScope.launch {
                 delay(2000)
                 withContext(Dispatchers.Main) {
                     viewModel.setArticles()
@@ -64,9 +72,25 @@ class HomeFragment : Fragment() {
 
     }
 
+    private fun hideKeyboard() {
+        val inputMethodManager =
+            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
+    }
+
     private fun getArticles(listArticles: ArrayList<ArticlesItem>) {
-        binding.rvNews.adapter = ArticlesAdapter(listArticles)
+        binding.rvNews.adapter = ArticlesAdapter(listArticles) { articles ->
+            Intent(this.context, DetailNewsActivity::class.java).also {
+                it.putExtra(MyCompanion.EXTRA_ARTICLES, articles)
+                startActivity(it)
+            }
+        }
         binding.srlNews.isRefreshing = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.edtSearch.clearFocus()
     }
 
     override fun onDestroyView() {
