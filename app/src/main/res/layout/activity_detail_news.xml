@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.detail.DetailNewsActivity">
+    tools:context=".ui.detail.DetailNewsActivity"
+    android:background="@color/grey_lighter">
+
+    <ImageView
+        android:id="@+id/iv_urlImage"
+        android:layout_width="match_parent"
+        android:layout_height="384dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/content_desc"
+        android:src="@drawable/detail_image_sample"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="368dp" />
-
-    <ImageView
-        android:id="@+id/iv_urlImage"
-        android:layout_width="wrap_content"
-        android:layout_height="384dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/content_desc"
-        android:scaleType="fitXY"
-        android:src="@drawable/detail_image_sample"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintGuide_begin="360dp" />
 
     <com.google.android.material.chip.Chip
         android:id="@+id/chip_detail_source"
@@ -50,7 +50,7 @@
         android:id="@+id/include_content"
         layout="@layout/layout_detail_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />

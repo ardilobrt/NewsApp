@@ -18,15 +18,12 @@
         <activity
             android:name=".ui.detail.DetailNewsActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.auth.SignInActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.auth.SignUpActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"

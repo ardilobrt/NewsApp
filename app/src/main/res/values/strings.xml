@@ -1,29 +1,29 @@
 <resources>
     <string name="app_name">And News</string>
-    <string name="title">First To Know</string>
-    <string name="description">All news in one place, be the first to know last news</string>
-    <string name="btn_next">Next</string>
+    <string name="title" translatable="false">First To Know</string>
+    <string name="description" translatable="false">All news in one place, be the first to know last news</string>
+    <string name="btn_next" translatable="false">Next</string>
     <string name="title_home">Browse News</string>
-    <string name="title_bookmark">Bookmark</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_bookmark" translatable="false">Bookmark</string>
+    <string name="title_profile" translatable="false">Profile</string>
     <string name="search_news">Search News</string>
-    <string name="content_desc">Content Desc</string>
+    <string name="content_desc" translatable="false">Content Desc</string>
     <string name="discover">Discover things of this world</string>
-    <string name="item_source">Antaranews.com</string>
-    <string name="item_title">A Simple Trick For Creating Color Palettes Quickly</string>
-    <string name="result">Result</string>
-    <string name="detail_content">Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races.
-        <br> For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters.</br>
-        <br> Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters.</br></string>
-    <string name="title_welcome_sign_up">Welcome to And News</string>
-    <string name="sub_title_welcome_sign_up">Hello, I guess you are new around here. You can start using the feature inside the app after sign up</string>
-    <string name="title_welcome_back">Welcome Back</string>
-    <string name="sub_title_welcome_back">I am happy to see you again, you can continue where you left off by logging in</string>
-    <string name="email">Email Address</string>
-    <string name="password">Password</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="btn_sign_in">Sign In</string>
-    <string name="btn_sign_up">Sign Up</string>
-    <string name="already_have_account">Already have an account?</string>
-    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="item_source" translatable="false">Antaranews.com</string>
+    <string name="item_title">Body aches to pain in the chest, a series of characteristics of lung infections that often go unnoticed</string>
+    <string name="detail_description" translatable="false">Description</string>
+    <string name="detail_content">The characteristics of a lung infection vary, depending on several factors. For example, age, overall health condition, to the causative factors</string>
+    <string name="empty_content">Sorry the content has not been loaded by the news source</string>
+    <string name="link"><u>For more information, click this link</u></string>
+    <string name="title_welcome_sign_up" translatable="false">Welcome to And News</string>
+    <string name="sub_title_welcome_sign_up" translatable="false">Hello, I guess you are new around here. You can start using the feature inside the app after sign up</string>
+    <string name="title_welcome_back" translatable="false">Welcome Back</string>
+    <string name="sub_title_welcome_back" translatable="false">I am happy to see you again, you can continue where you left off by logging in</string>
+    <string name="email" translatable="false">Email Address</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="forgot_password" translatable="false">Forgot Password?</string>
+    <string name="btn_sign_in" translatable="false">Sign In</string>
+    <string name="btn_sign_up" translatable="false">Sign Up</string>
+    <string name="already_have_account" translatable="false">Already have an account?</string>
+    <string name="dont_have_account" translatable="false">Don\'t have an account?</string>
 </resources>

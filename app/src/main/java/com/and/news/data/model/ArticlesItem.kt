@@ -8,26 +8,26 @@ import kotlinx.parcelize.Parcelize
 data class ArticlesItem(
 
     @field:SerializedName("publishedAt")
-    val publishedAt: String,
+    val publishedAt: String?,
 
     @field:SerializedName("author")
-    val author: String,
+    val author: String?,
 
     @field:SerializedName("urlToImage")
-    val urlToImage: String,
+    val urlToImage: String?,
 
     @field:SerializedName("description")
-    val description: String,
+    val description: String?,
 
     @field:SerializedName("source")
-    val source: Source,
+    val source: Source?,
 
     @field:SerializedName("title")
-    val title: String,
+    val title: String?,
 
     @field:SerializedName("url")
-    val url: String,
+    val url: String?,
 
     @field:SerializedName("content")
-    val content: String
+    val content: String?
 ) : Parcelable
