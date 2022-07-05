@@ -26,4 +26,7 @@
     <string name="btn_sign_up" translatable="false">Sign Up</string>
     <string name="already_have_account" translatable="false">Already have an account?</string>
     <string name="dont_have_account" translatable="false">Don\'t have an account?</string>
+    <string name="get_started" translatable="false">Get Started</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>
