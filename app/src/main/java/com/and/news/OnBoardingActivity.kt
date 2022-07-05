@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.WindowInsetsController
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.and.news.adapter.ViewPagerAdapter
 import com.and.news.data.SharedPrefManager
 import com.and.news.databinding.ActivityOnBoardingBinding
@@ -20,6 +21,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
