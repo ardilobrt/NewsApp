@@ -2,6 +2,7 @@ package com.and.news
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -67,10 +68,20 @@ class OnBoardingActivity : AppCompatActivity() {
         supportActionBar?.hide()
         window.statusBarColor = Color.TRANSPARENT
         if (!isFlagCleared) {
-            window.insetsController?.setSystemBarsAppearance(
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            )
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                window.insetsController?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                window.decorView.systemUiVisibility =
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+                    } else {
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                    }
+            }
         } else {
             window.insetsController?.setSystemBarsAppearance(
                 0,
