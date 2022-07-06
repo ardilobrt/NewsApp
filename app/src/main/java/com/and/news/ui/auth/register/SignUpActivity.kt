@@ -8,8 +8,9 @@ import com.and.news.data.database.UserDatabase
 import com.and.news.data.entity.Users
 import com.and.news.databinding.ActivitySignUpBinding
 import com.and.news.ui.auth.SignInActivity
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class SignUpActivity : AppCompatActivity(), SignUpView {
     private lateinit var binding: ActivitySignUpBinding
@@ -17,6 +18,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
     private lateinit var users: Users
     private var database: UserDatabase? = null
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
@@ -35,7 +37,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
                 if (presenter.checkEmpty(username, email, password)) {
                     users = Users(null, username, email, password)
 
-                    GlobalScope.async {
+                    GlobalScope.launch {
                         val result = database?.userDao()?.insertUser(users)
                         runOnUiThread {
                             if (result != 0.toLong()) {
