@@ -1,10 +1,10 @@
-package com.and.news.ui.auth
+package com.and.news.ui.auth.register
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.and.news.R
 import com.and.news.databinding.ActivitySignUpBinding
+import com.and.news.ui.auth.SignInActivity
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding

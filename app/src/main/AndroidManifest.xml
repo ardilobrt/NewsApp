@@ -26,7 +26,7 @@
             android:name=".ui.auth.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.SignUpActivity"
+            android:name=".ui.auth.register.SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".OnBoardingActivity"
