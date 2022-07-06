@@ -14,14 +14,7 @@ class SignInPresenterImp(val view: SignInView) : SignInPresenter {
     }
 
     override fun validateUser(users: Users, email: String, password: String): Boolean {
-        if (users.email.toString() == email && users.password.toString() == password) {
-            setSuccess(true)
-        } else {
-            setSuccess(false)
-            return false
-        }
-
-        return true
+        return users.email.toString() == email && users.password.toString() == password
     }
 
     override fun setSuccess(isSuccess: Boolean) {

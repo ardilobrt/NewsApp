@@ -55,9 +55,10 @@ class SignInActivity : AppCompatActivity(), SignInView {
             runOnUiThread {
                 if (result != null) {
                     if (presenter.validateUser(result, email, password)) {
+                        presenter.setSuccess(true)
                         val user = result.username.toString()
                         goToMain(user)
-                    }
+                    } else presenter.setSuccess(false)
                 } else showMessage("User Cannot Found")
             }
         }
