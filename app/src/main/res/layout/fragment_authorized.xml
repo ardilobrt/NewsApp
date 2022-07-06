@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.AuthorizedFragment">
+
+    <ImageView
+        android:id="@+id/iv_onboarding"
+        android:layout_width="288dp"
+        android:layout_height="336dp"
+        android:layout_marginTop="120dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/on_unauthorized"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/content_desc" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TextContent.ItemTitle"
+        android:layout_marginBottom="132dp"
+        android:gravity="center"
+        android:text="@string/unauthorized"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        style="@style/TextContent.Description"
+        android:gravity="center"
+        android:text="@string/please_sign_in"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        style="@style/Theme.AndNews.Button"
+        android:text="@string/btn_sign_in"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
