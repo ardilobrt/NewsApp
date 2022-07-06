@@ -24,8 +24,6 @@ class SignInActivity : AppCompatActivity(), SignInView {
         presenter = SignInPresenterImp(this)
         setContentView(binding.root)
 
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-
         database = UserDatabase.getInstance(this)
 
         setUiListener()
@@ -58,17 +56,17 @@ class SignInActivity : AppCompatActivity(), SignInView {
                 if (result != null) {
                     if (presenter.validateUser(result, email, password)) {
                         val user = result.username.toString()
-                        SharedPrefManager.setIsOnLogin(this@SignInActivity, true)
-                        SharedPrefManager.saveUserName(this@SignInActivity, user)
-                        goToMain()
+                        goToMain(user)
                     }
                 } else showMessage("User Cannot Found")
             }
         }
     }
 
-    private fun goToMain() {
+    private fun goToMain(user: String) {
         Intent(this, MainActivity::class.java).also {
+            SharedPrefManager.setIsOnLogin(this@SignInActivity, true)
+            SharedPrefManager.saveUserName(this@SignInActivity, user)
             finish()
             startActivity(it)
         }
@@ -76,10 +74,5 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
     override fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        goToMain()
     }
 }
