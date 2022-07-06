@@ -23,7 +23,7 @@
             android:name=".ui.detail.DetailNewsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.SignInActivity"
+            android:name=".ui.auth.login.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.register.SignUpActivity"

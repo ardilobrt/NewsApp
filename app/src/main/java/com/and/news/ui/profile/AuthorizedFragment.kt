@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.and.news.databinding.FragmentAuthorizedBinding
-import com.and.news.ui.auth.SignInActivity
+import com.and.news.ui.auth.login.SignInActivity
 
 class AuthorizedFragment : Fragment() {
     private var _binding: FragmentAuthorizedBinding? = null

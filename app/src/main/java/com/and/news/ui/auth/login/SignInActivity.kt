@@ -1,4 +1,4 @@
-package com.and.news.ui.auth
+package com.and.news.ui.auth.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
