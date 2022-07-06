@@ -21,7 +21,7 @@ abstract class UserDatabase : RoomDatabase() {
                 synchronized(UserDatabase::class) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        UserDatabase::class.java, "UserNews.db"
+                        UserDatabase::class.java, "News.db"
                     ).build()
                 }
             }

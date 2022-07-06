@@ -1,12 +1,10 @@
 package com.and.news.data.dao
 
-import androidx.room.Delete
-import androidx.room.Insert
+import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import androidx.room.Query
-import androidx.room.Update
 import com.and.news.data.entity.Users
 
+@Dao
 interface UserDao {
 
     @Query("SELECT * FROM Users")
