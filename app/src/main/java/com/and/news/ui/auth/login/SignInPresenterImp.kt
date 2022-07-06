@@ -2,9 +2,9 @@ package com.and.news.ui.auth.login
 
 import com.and.news.ui.auth.register.SignUpPresenter
 
-class SignInPresenterImp(val view: SignInView) : SignUpPresenter {
+class SignInPresenterImp(val view: SignInView) : SignInPresenter{
 
-    override fun checkEmpty(username: String, email: String, password: String): Boolean {
+    override fun checkEmpty(email: String, password: String): Boolean {
         TODO("Not yet implemented")
     }
 
