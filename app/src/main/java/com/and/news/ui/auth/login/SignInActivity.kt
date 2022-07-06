@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.and.news.MainActivity
+import com.and.news.data.SharedPrefManager
 import com.and.news.data.database.UserDatabase
 import com.and.news.databinding.ActivitySignInBinding
 import com.and.news.ui.auth.register.SignUpActivity
@@ -21,6 +23,8 @@ class SignInActivity : AppCompatActivity(), SignInView {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         presenter = SignInPresenterImp(this)
         setContentView(binding.root)
+
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         database = UserDatabase.getInstance(this)
 
@@ -52,9 +56,21 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
             runOnUiThread {
                 if (result != null) {
-                    if (presenter.validateUser(result, email, password)) finish()
+                    if (presenter.validateUser(result, email, password)) {
+                        val user = result.username.toString()
+                        SharedPrefManager.setIsOnLogin(this@SignInActivity, true)
+                        SharedPrefManager.saveUserName(this@SignInActivity, user)
+                        goToMain()
+                    }
                 } else showMessage("User Cannot Found")
             }
+        }
+    }
+
+    private fun goToMain() {
+        Intent(this, MainActivity::class.java).also {
+            finish()
+            startActivity(it)
         }
     }
 
@@ -62,5 +78,8 @@ class SignInActivity : AppCompatActivity(), SignInView {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToMain()
+    }
 }

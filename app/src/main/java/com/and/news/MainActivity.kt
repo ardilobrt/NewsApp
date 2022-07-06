@@ -2,7 +2,8 @@ package com.and.news
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.and.news.data.SharedPrefManager
@@ -11,7 +12,7 @@ import com.and.news.ui.bookmark.BookmarkFragment
 import com.and.news.ui.home.HomeFragment
 import com.and.news.ui.profile.AuthorizedFragment
 import com.and.news.ui.profile.ProfileFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,6 +61,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showUser(username: String) {
-        Toast.makeText(this, "HALO ${username.uppercase()}", Toast.LENGTH_SHORT).show()
+        val snackBar =
+            Snackbar.make(binding.root, "HELLO ${username.uppercase()}", Snackbar.LENGTH_LONG)
+        snackBar.setAction("CLOSE") {
+            snackBar.dismiss()
+        }
+        snackBar.setActionTextColor(ContextCompat.getColor(applicationContext, R.color.purple_lighter))
+        snackBar.show()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(MainActivity::class.java.simpleName, "onPause: YES")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(MainActivity::class.java.simpleName, "onResume: YES")
     }
 }
