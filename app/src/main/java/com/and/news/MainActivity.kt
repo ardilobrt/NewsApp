@@ -2,17 +2,16 @@ package com.and.news
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.ViewTreeObserver
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import com.and.news.data.SharedPrefManager
 import com.and.news.databinding.ActivityMainBinding
+import com.and.news.ui.bookmark.BookmarkFragment
+import com.and.news.ui.home.HomeFragment
+import com.and.news.ui.profile.AuthorizedFragment
+import com.and.news.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.util.*
-import kotlin.concurrent.schedule
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,17 +26,40 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showDashboard() {
-        val navView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_home)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_bookmark, R.id.navigation_profile
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        replaceFragment(HomeFragment())
+
+        val username = SharedPrefManager.getUserName(this).toString()
+
+        if (username.isEmpty()) {
+            showUser("READER")
+            SharedPrefManager.setIsOnLogin(this, false)
+        } else showUser(username)
+
+        binding.bottomNav.setOnItemSelectedListener {
+
+            when (it.itemId) {
+                R.id.navigation_home -> replaceFragment(HomeFragment())
+                R.id.navigation_bookmark -> replaceFragment(BookmarkFragment())
+                R.id.navigation_profile -> {
+                    val isOnLogin = SharedPrefManager.getIsOnLogin(this)
+                    if (isOnLogin) replaceFragment(ProfileFragment())
+                    else replaceFragment(AuthorizedFragment())
+                }
+            }
+            true
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.commit {
+            setReorderingAllowed(true)
+            replace(R.id.fragment_view, fragment)
+        }
+    }
+
+    private fun showUser(username: String) {
+        Toast.makeText(this, "HALO ${username.uppercase()}", Toast.LENGTH_SHORT).show()
     }
 }

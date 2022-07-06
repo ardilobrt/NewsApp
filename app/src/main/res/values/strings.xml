@@ -19,6 +19,8 @@
     <string name="sub_title_welcome_sign_up" translatable="false">Hello, I guess you are new around here. You can start using the feature inside the app after sign up</string>
     <string name="title_welcome_back" translatable="false">Welcome Back</string>
     <string name="sub_title_welcome_back" translatable="false">I am happy to see you again, you can continue where you left off by logging in</string>
+    <string name="unauthorized" translatable="false">Unauthorized</string>
+    <string name="please_sign_in" translatable="false">Please sign in to use this feature</string>
     <string name="email" translatable="false">Email Address</string>
     <string name="password" translatable="false">Password</string>
     <string name="forgot_password" translatable="false">Forgot Password?</string>
