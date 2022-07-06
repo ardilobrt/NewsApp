@@ -10,8 +10,8 @@ interface UserDao {
     @Query("SELECT * FROM Users")
     fun getAllUsers(): List<Users>
 
-    @Query("SELECT * FROM Users WHERE username LIKE :username")
-    fun getUsername(username: String?): Users
+    @Query("SELECT * FROM Users WHERE email LIKE :email")
+    fun getUsername(email: String?): Users
 
     @Insert(onConflict = REPLACE)
     fun insertUser(userNews: Users): Long
