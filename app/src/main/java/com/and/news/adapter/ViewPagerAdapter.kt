@@ -9,10 +9,11 @@ import com.and.news.ui.onboarding.fragment.SecondOnBoardingFragment
 import com.and.news.ui.onboarding.fragment.ThirdOnBoardingFragment
 
 class ViewPagerAdapter(fm: FragmentManager, lf: Lifecycle) : FragmentStateAdapter(fm, lf) {
+
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
-        var fragment: Fragment? =null
+        var fragment: Fragment? = null
         when (position) {
             0 -> fragment = FirstOnBoardingFragment()
             1 -> fragment = SecondOnBoardingFragment()
@@ -20,5 +21,4 @@ class ViewPagerAdapter(fm: FragmentManager, lf: Lifecycle) : FragmentStateAdapte
         }
         return fragment as Fragment
     }
-
 }
