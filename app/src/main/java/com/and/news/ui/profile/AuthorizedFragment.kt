@@ -26,7 +26,6 @@ class AuthorizedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btnSignIn.setOnClickListener {
             Intent(requireContext(), SignInActivity::class.java).also {
-                (activity as MainActivity).finish()
                 startActivity(it)
             }
         }
