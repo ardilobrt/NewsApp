@@ -31,6 +31,8 @@ class OnBoardingActivity : AppCompatActivity() {
         }
         setupSplashScreen()
 
+        supportActionBar?.hide()
+        window.statusBarColor = Color.TRANSPARENT
         setStatusBar(false)
 
         val isOnBoardingShow = SharedPrefManager.getIsOnBoardingShown(this)
@@ -65,8 +67,6 @@ class OnBoardingActivity : AppCompatActivity() {
 
     // Setup Action Bar
     private fun setStatusBar(isFlagCleared: Boolean) {
-        supportActionBar?.hide()
-        window.statusBarColor = Color.TRANSPARENT
         if (!isFlagCleared) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 window.insetsController?.setSystemBarsAppearance(
@@ -78,16 +78,11 @@ class OnBoardingActivity : AppCompatActivity() {
                 window.decorView.systemUiVisibility =
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-                    } else {
-                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                    }
+                    } else View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             }
-        } else {
-            window.insetsController?.setSystemBarsAppearance(
-                0,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            )
-        }
+        } else window.insetsController?.setSystemBarsAppearance(
+            0, WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+        )
     }
 
     private fun goToMain() {
