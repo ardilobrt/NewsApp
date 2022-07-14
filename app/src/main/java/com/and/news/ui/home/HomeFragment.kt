@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -48,8 +47,6 @@ class HomeFragment : Fragment() {
             rvNews.layoutManager = layoutManager
             rvNews.addItemDecoration(itemDecoration)
         }
-
-        viewModel.setArticles()
 
         binding.srlNews.setOnRefreshListener {
             binding.edtSearch.clearFocus()
