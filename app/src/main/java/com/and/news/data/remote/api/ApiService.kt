@@ -1,7 +1,7 @@
-package com.and.news.api
+package com.and.news.data.remote.api
 
 import com.and.news.BuildConfig
-import com.and.news.data.model.ArticlesResponse
+import com.and.news.data.remote.model.ArticlesResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

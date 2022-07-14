@@ -3,7 +3,6 @@ package com.and.news.ui.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.and.news.data.SharedPrefManager
 
 class ProfileViewModel : ViewModel() {
 

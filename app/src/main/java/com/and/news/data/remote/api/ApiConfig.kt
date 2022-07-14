@@ -1,4 +1,4 @@
-package com.and.news.api
+package com.and.news.data.remote.api
 
 import com.and.news.BuildConfig
 import okhttp3.OkHttpClient

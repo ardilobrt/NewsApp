@@ -13,9 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.and.news.adapter.ArticlesAdapter
-import com.and.news.data.MyCompanion
-import com.and.news.data.MyCompanion.showLoading
-import com.and.news.data.model.ArticlesItem
+import com.and.news.utils.MyCompanion
+import com.and.news.utils.MyCompanion.showLoading
+import com.and.news.data.remote.model.ArticlesItem
 import com.and.news.databinding.FragmentHomeBinding
 import com.and.news.ui.detail.DetailNewsActivity
 import kotlinx.coroutines.Dispatchers

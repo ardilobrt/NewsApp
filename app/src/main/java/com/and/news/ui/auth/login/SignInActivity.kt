@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.and.news.MainActivity
-import com.and.news.data.SharedPrefManager
-import com.and.news.data.database.UserDatabase
+import com.and.news.ui.MainActivity
+import com.and.news.utils.SharedPrefManager
+import com.and.news.data.local.room.UserDatabase
 import com.and.news.databinding.ActivitySignInBinding
 import com.and.news.ui.auth.register.SignUpActivity
 import kotlinx.coroutines.DelicateCoroutinesApi

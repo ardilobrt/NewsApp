@@ -3,7 +3,7 @@ package com.and.news.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.and.news.data.model.ArticlesItem
+import com.and.news.data.remote.model.ArticlesItem
 
 class DetailNewsViewModel : ViewModel() {
 

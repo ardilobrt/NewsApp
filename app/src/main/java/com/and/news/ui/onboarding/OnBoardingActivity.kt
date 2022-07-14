@@ -1,4 +1,4 @@
-package com.and.news
+package com.and.news.ui.onboarding
 
 import android.content.Intent
 import android.graphics.Color
@@ -9,8 +9,9 @@ import android.view.View
 import android.view.ViewTreeObserver
 import android.view.WindowInsetsController
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.and.news.ui.MainActivity
 import com.and.news.adapter.ViewPagerAdapter
-import com.and.news.data.SharedPrefManager
+import com.and.news.utils.SharedPrefManager
 import com.and.news.databinding.ActivityOnBoardingBinding
 import java.util.*
 import kotlin.concurrent.schedule

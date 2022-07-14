@@ -1,4 +1,4 @@
-package com.and.news.data.entity
+package com.and.news.data.local.entity
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

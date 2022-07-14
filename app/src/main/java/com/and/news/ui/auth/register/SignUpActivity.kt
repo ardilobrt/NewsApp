@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.and.news.data.database.UserDatabase
-import com.and.news.data.entity.Users
+import com.and.news.data.local.room.UserDatabase
+import com.and.news.data.local.entity.Users
 import com.and.news.databinding.ActivitySignUpBinding
 import com.and.news.ui.auth.login.SignInActivity
 import kotlinx.coroutines.DelicateCoroutinesApi

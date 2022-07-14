@@ -1,8 +1,8 @@
-package com.and.news.data.dao
+package com.and.news.data.local.room
 
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import com.and.news.data.entity.Users
+import com.and.news.data.local.entity.Users
 
 @Dao
 interface UserDao {

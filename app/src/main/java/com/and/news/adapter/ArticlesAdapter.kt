@@ -3,9 +3,9 @@ package com.and.news.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.and.news.data.MyCompanion.loadImage
+import com.and.news.utils.MyCompanion.loadImage
 import com.and.news.databinding.ItemNewsBinding
-import com.and.news.data.model.ArticlesItem
+import com.and.news.data.remote.model.ArticlesItem
 
 class ArticlesAdapter(
     private val listArticles: ArrayList<ArticlesItem>,

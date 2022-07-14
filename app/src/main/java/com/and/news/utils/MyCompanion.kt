@@ -1,4 +1,4 @@
-package com.and.news.data
+package com.and.news.utils
 
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView

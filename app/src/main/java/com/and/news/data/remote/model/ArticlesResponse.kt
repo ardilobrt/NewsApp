@@ -1,4 +1,4 @@
-package com.and.news.data.model
+package com.and.news.data.remote.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

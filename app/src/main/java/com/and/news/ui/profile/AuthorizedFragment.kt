@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.and.news.MainActivity
 import com.and.news.databinding.FragmentAuthorizedBinding
 import com.and.news.ui.auth.login.SignInActivity
 

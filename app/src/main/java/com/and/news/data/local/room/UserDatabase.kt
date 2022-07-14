@@ -1,11 +1,10 @@
-package com.and.news.data.database
+package com.and.news.data.local.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.and.news.data.dao.UserDao
-import com.and.news.data.entity.Users
+import com.and.news.data.local.entity.Users
 
 @Database(entities = [Users::class], version = 1)
 abstract class UserDatabase : RoomDatabase() {

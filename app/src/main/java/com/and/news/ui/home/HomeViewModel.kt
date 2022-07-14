@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.and.news.api.ApiConfig
-import com.and.news.data.model.ArticlesItem
-import com.and.news.data.model.ArticlesResponse
+import com.and.news.data.remote.api.ApiConfig
+import com.and.news.data.remote.model.ArticlesItem
+import com.and.news.data.remote.model.ArticlesResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,16 +1,14 @@
 package com.and.news.ui.detail
 
 import android.content.Intent
-import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.core.view.WindowCompat
 import com.and.news.R
-import com.and.news.data.MyCompanion
-import com.and.news.data.MyCompanion.loadImageDetail
-import com.and.news.data.model.ArticlesItem
+import com.and.news.utils.MyCompanion
+import com.and.news.utils.MyCompanion.loadImageDetail
+import com.and.news.data.remote.model.ArticlesItem
 import com.and.news.databinding.ActivityDetailNewsBinding
 
 class DetailNewsActivity : AppCompatActivity() {
