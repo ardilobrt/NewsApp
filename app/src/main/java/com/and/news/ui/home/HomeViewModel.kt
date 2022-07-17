@@ -1,54 +1,18 @@
 package com.and.news.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.and.news.data.remote.api.ApiConfig
-import com.and.news.data.remote.model.ArticlesItem
-import com.and.news.data.remote.model.ArticlesResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.and.news.data.MyResult
+import com.and.news.data.local.entity.Articles
+import com.and.news.data.repository.ArticlesRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val articlesRepository: ArticlesRepository) : ViewModel() {
 
-    private val _listArticles = MutableLiveData<ArrayList<ArticlesItem>>()
-    val listArticles: LiveData<ArrayList<ArticlesItem>> = _listArticles
-
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
+    val listArticles: LiveData<MyResult<List<Articles>>> = articlesRepository.listArticles
 
     init {
         setArticles()
     }
 
-    fun setArticles() {
-        _isLoading.value = true
-        val client = ApiConfig.getApiService().getNewsByLocal(LOCAL)
-        client.enqueue(object : Callback<ArticlesResponse> {
-            override fun onResponse(
-                call: Call<ArticlesResponse>,
-                response: Response<ArticlesResponse>
-            ) {
-                _isLoading.value = false
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody != null) _listArticles.value = responseBody.articles
-                } else Log.e(TAG, "onFailure: ${response.message()}")
-            }
-
-            override fun onFailure(call: Call<ArticlesResponse>, t: Throwable) {
-                _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message}")
-            }
-
-        })
-    }
-
-    companion object {
-        private const val TAG = "HomeFragment"
-        private const val LOCAL = "id"
-    }
-
+    private fun setArticles() = articlesRepository.getArticlesFromApi()
 }

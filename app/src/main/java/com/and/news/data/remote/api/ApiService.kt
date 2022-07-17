@@ -8,9 +8,9 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("v2/top-headlines")
+    @GET("top-headlines")
     fun getNewsByLocal(
         @Query("country") country: String,
         @Query("apiKey") apikey: String = BuildConfig.APP_KEY
-    ) : Call<ArticlesResponse>
+    ): Call<ArticlesResponse>
 }

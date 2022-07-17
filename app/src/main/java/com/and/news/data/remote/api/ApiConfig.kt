@@ -1,6 +1,5 @@
 package com.and.news.data.remote.api
 
-import com.and.news.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -8,12 +7,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
 
-    private const val BASE_URL = "https://newsapi.org/"
+    private const val BASE_URL = "https://newsapi.org/v2/"
 
     fun getApiService(): ApiService {
-        val loggingInterceptor = if (BuildConfig.DEBUG) {
-            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-        } else HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+        val loggingInterceptor = HttpLoggingInterceptor()
+            .setLevel(HttpLoggingInterceptor.Level.BODY)
 
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
