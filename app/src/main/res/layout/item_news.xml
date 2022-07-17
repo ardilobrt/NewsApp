@@ -3,8 +3,11 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    card_view:cardCornerRadius="4dp">
+    android:orientation="vertical"
+    card_view:cardElevation="4dp"
+    card_view:cardMaxElevation="4dp"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardUseCompatPadding="true">
 
     <com.faltenreich.skeletonlayout.SkeletonLayout
         android:layout_width="match_parent"
@@ -46,8 +49,5 @@
                 card_view:layout_constraintStart_toStartOf="@+id/tv_item_source" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.faltenreich.skeletonlayout.SkeletonLayout>
-
-
 </androidx.cardview.widget.CardView>
