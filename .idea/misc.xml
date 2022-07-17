@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_baseline_bookmark.xml" value="0.121" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_bookmark.xml" value="0.121" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_bookmark_white.xml" value="0.121" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_bookmarked.xml" value="0.121" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_bookmarked_white.xml" value="0.121" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_content_background.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_detail_content_background.xml" value="0.1145" />

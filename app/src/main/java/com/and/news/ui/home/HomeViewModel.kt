@@ -14,5 +14,13 @@ class HomeViewModel(private val articlesRepository: ArticlesRepository) : ViewMo
         setArticles()
     }
 
-    private fun setArticles() = articlesRepository.getArticlesFromApi()
+    fun setArticles() = articlesRepository.getArticlesFromApi()
+
+    fun saveBookmark(articles: Articles) {
+        articlesRepository.setBookmarkArticles(articles, true)
+    }
+
+    fun deleteBookmark(articles: Articles) {
+        articlesRepository.setBookmarkArticles(articles, false)
+    }
 }

@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.and.news.adapter.ArticlesAdapter
 import com.and.news.data.MyResult
-import com.and.news.utils.MyCompanion.showLoading
 import com.and.news.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -33,7 +32,11 @@ class HomeFragment : Fragment() {
         val factory: HomeViewModelFactory = HomeViewModelFactory.getInstance(requireActivity())
         val viewModel: HomeViewModel by viewModels { factory }
 
-        val articlesAdapter = ArticlesAdapter()
+        val articlesAdapter = ArticlesAdapter { article ->
+            if (article.isBookmarked) {
+                viewModel.deleteBookmark(article)
+            } else viewModel.saveBookmark(article)
+        }
 
         viewModel.listArticles.observe(viewLifecycleOwner) { result ->
             if (result != null) {

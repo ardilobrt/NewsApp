@@ -32,4 +32,5 @@
     <string name="get_started" translatable="false">Get Started</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="save_bookmark">Save bookmark?</string>
 </resources>

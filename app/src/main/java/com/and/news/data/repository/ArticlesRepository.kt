@@ -60,6 +60,13 @@ class ArticlesRepository private constructor(
         }
     }
 
+    fun setBookmarkArticles(articles: Articles, bookmarkState: Boolean) {
+        appExecutors.diskIO.execute {
+            articles.isBookmarked = bookmarkState
+            articlesDao.updateArticles(articles)
+        }
+    }
+
     companion object {
         private const val LOCAL_IDN = "id"
 
