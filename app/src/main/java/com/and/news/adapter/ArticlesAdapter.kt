@@ -8,10 +8,17 @@ import com.and.news.R
 import com.and.news.data.local.entity.Articles
 import com.and.news.adapter.ArticlesAdapter.MyViewHolder
 import com.and.news.databinding.ItemNewsBinding
+import com.and.news.utils.DateFormatter
 import com.and.news.utils.MyCompanion.loadImage
 
 class ArticlesAdapter(private val onBookmarkClick: (Articles) -> Unit) :
     ListAdapter<Articles, MyViewHolder>(DIFF_CALLBACK) {
+
+    private lateinit var onItemClickCallBack: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallBack = onItemClickCallback
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val viewHolder = ItemNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -40,6 +47,10 @@ class ArticlesAdapter(private val onBookmarkClick: (Articles) -> Unit) :
         ivBookmark.setOnClickListener {
             onBookmarkClick(articles)
         }
+
+        holder.itemView.setOnClickListener {
+            onItemClickCallBack.onItemClicked(articles)
+        }
     }
 
     inner class MyViewHolder(val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -50,6 +61,10 @@ class ArticlesAdapter(private val onBookmarkClick: (Articles) -> Unit) :
                 ivItemImage.loadImage(articles.urlToImage)
             }
         }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Articles)
     }
 
     companion object {

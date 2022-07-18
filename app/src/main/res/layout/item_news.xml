@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/save_bookmark"
-            android:padding="16dp"
+            android:padding="8dp"
             android:src="@drawable/ic_bookmark"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />

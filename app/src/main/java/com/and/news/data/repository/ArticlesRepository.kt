@@ -7,6 +7,7 @@ import com.and.news.data.local.room.ArticlesDao
 import com.and.news.data.remote.api.ApiService
 import com.and.news.data.remote.model.ArticlesResponse
 import com.and.news.utils.AppExecutors
+import com.and.news.utils.DateFormatter
 import retrofit2.*
 
 class ArticlesRepository private constructor(
@@ -31,11 +32,14 @@ class ArticlesRepository private constructor(
                     appExecutors.diskIO.execute {
                         responseBody?.forEach {
                             val isBookmarked = articlesDao.isNewsBookmarked(it.title.toString())
+                            val date = DateFormatter.formatDate(it.publishedAt)
                             val articles = Articles(
                                 it.title.toString(),
-                                it.publishedAt.toString(),
+                                date.toString(),
                                 it.source?.name.toString(),
                                 it.urlToImage.toString(),
+                                it.description,
+                                it.url.toString(),
                                 isBookmarked
                             )
                             articlesList.add(articles)

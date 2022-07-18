@@ -20,6 +20,12 @@ class Articles(
     @field:ColumnInfo(name = "urlToImage")
     val urlToImage: String,
 
+    @field:ColumnInfo(name = "description")
+    val description: String?,
+
+    @field:ColumnInfo(name = "url")
+    val url: String,
+
     @field:ColumnInfo(name = "isBookmarked")
     var isBookmarked: Boolean
 ) : Parcelable

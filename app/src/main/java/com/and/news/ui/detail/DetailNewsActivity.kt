@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.and.news.R
+import com.and.news.data.local.entity.Articles
 import com.and.news.utils.MyCompanion
 import com.and.news.utils.MyCompanion.loadImageDetail
 import com.and.news.data.remote.model.ArticlesItem
@@ -22,8 +23,7 @@ class DetailNewsActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val articles =
-            intent.getParcelableExtra<ArticlesItem>(MyCompanion.EXTRA_ARTICLES) as ArticlesItem
+        val articles = intent.getParcelableExtra<Articles>(MyCompanion.EXTRA_ARTICLES) as Articles
 
         viewModel.getDetails(articles)
 
@@ -31,9 +31,10 @@ class DetailNewsActivity : AppCompatActivity() {
             if (it != null) {
                 binding.apply {
                     ivUrlImage.loadImageDetail(it.urlToImage)
-                    chipDetailSource.text = it.source?.name
+                    chipDetailSource.text = it.sourceName
                     tvDetailTitle.text = it.title
-                    includeContent.tvContent.text = it.description ?: getString(R.string.empty_content)
+                    includeContent.tvContent.text =
+                        it.description ?: getString(R.string.empty_content)
                     includeContent.tvLink.setOnClickListener { _ ->
                         Intent(Intent.ACTION_VIEW).also { intent ->
                             intent.data = Uri.parse(it.url)
