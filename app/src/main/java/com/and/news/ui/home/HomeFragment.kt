@@ -1,23 +1,22 @@
 package com.and.news.ui.home
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.and.news.R
 import com.and.news.adapter.ArticlesAdapter
-import com.and.news.utils.MyCompanion
-import com.and.news.utils.MyCompanion.showLoading
-import com.and.news.data.remote.model.ArticlesItem
+import com.and.news.data.MyResult
+import com.and.news.data.local.entity.Articles
 import com.and.news.databinding.FragmentHomeBinding
 import com.and.news.ui.detail.DetailNewsActivity
+import com.and.news.utils.MyCompanion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -27,7 +26,6 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<HomeViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,50 +37,63 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val layoutManager = LinearLayoutManager(context)
-        val itemDecoration = DividerItemDecoration(context, layoutManager.orientation)
+        val factory: HomeViewModelFactory = HomeViewModelFactory.getInstance(requireActivity())
+        val viewModel: HomeViewModel by viewModels { factory }
 
-        binding.apply {
-            rvNews.layoutManager = layoutManager
-            rvNews.addItemDecoration(itemDecoration)
+        val articlesAdapter = ArticlesAdapter { article ->
+            if (article.isBookmarked) {
+                viewModel.deleteBookmark(article)
+            } else viewModel.saveBookmark(article)
         }
 
-        binding.srlNews.setOnRefreshListener {
-            binding.edtSearch.clearFocus()
-            hideKeyboard()
-            lifecycleScope.launch {
-                delay(2000)
-                withContext(Dispatchers.Main) {
-                    viewModel.setArticles()
+        viewModel.listArticles.observe(viewLifecycleOwner) { result ->
+            if (result != null) {
+                when (result) {
+                    is MyResult.Loading -> binding.progressBar.visibility = View.VISIBLE
+                    is MyResult.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        articlesAdapter.submitList(result.data)
+                    }
+                    is MyResult.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.error_result),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
         }
 
-        viewModel.listArticles.observe(viewLifecycleOwner) {
-            getArticles(it)
+        binding.rvNews.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = articlesAdapter
         }
 
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            binding.rvNews.showLoading(it)
-        }
+        articlesAdapter.setOnItemClickCallback(object : ArticlesAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Articles) {
+                Intent(requireActivity(), DetailNewsActivity::class.java).also {
+                    it.putExtra(MyCompanion.EXTRA_ARTICLES, data)
+                    startActivity(it)
+                }
+            }
+        })
 
-    }
-
-    private fun hideKeyboard() {
-        val inputMethodManager =
-            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
-    }
-
-    private fun getArticles(listArticles: ArrayList<ArticlesItem>) {
-        binding.rvNews.adapter = ArticlesAdapter(listArticles) { articles ->
-            Intent(this.context, DetailNewsActivity::class.java).also {
-                it.putExtra(MyCompanion.EXTRA_ARTICLES, articles)
-                startActivity(it)
+        binding.srlNews.apply {
+            setOnRefreshListener {
+                lifecycleScope.launch {
+                    delay(2000)
+                    withContext(Dispatchers.Main) {
+                        viewModel.setArticles()
+                        isRefreshing = false
+                    }
+                }
             }
         }
-        binding.srlNews.isRefreshing = false
     }
 
     override fun onResume() {

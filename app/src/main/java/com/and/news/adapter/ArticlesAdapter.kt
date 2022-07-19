@@ -1,43 +1,83 @@
 package com.and.news.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.and.news.utils.MyCompanion.loadImage
+import android.annotation.SuppressLint
+import android.view.*
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.*
+import com.and.news.R
+import com.and.news.data.local.entity.Articles
+import com.and.news.adapter.ArticlesAdapter.MyViewHolder
 import com.and.news.databinding.ItemNewsBinding
-import com.and.news.data.remote.model.ArticlesItem
+import com.and.news.utils.DateFormatter
+import com.and.news.utils.MyCompanion.loadImage
 
-class ArticlesAdapter(
-    private val listArticles: ArrayList<ArticlesItem>,
-    val onItemClick: (ArticlesItem) -> Unit
-) :
-    RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+class ArticlesAdapter(private val onBookmarkClick: (Articles) -> Unit) :
+    ListAdapter<Articles, MyViewHolder>(DIFF_CALLBACK) {
 
-    inner class ViewHolder(private var binding: ItemNewsBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    private lateinit var onItemClickCallBack: OnItemClickCallback
 
-        fun bind(articles: ArticlesItem) {
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallBack = onItemClickCallback
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val viewHolder = ItemNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(viewHolder)
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val articles = getItem(position)
+        holder.bind(articles)
+
+        val ivBookmark = holder.binding.ivBookmark
+        if (articles.isBookmarked) {
+            ivBookmark.setImageDrawable(
+                ContextCompat.getDrawable(
+                    ivBookmark.context,
+                    R.drawable.ic_bookmarked
+                )
+            )
+        } else ivBookmark.setImageDrawable(
+            ContextCompat.getDrawable(
+                ivBookmark.context,
+                R.drawable.ic_bookmark
+            )
+        )
+
+        ivBookmark.setOnClickListener {
+            onBookmarkClick(articles)
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClickCallBack.onItemClicked(articles)
+        }
+    }
+
+    inner class MyViewHolder(val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(articles: Articles) {
             binding.apply {
-                ivItemImage.loadImage(articles.urlToImage)
-                tvItemSource.text = articles.source?.name
+                tvItemSource.text = articles.sourceName
                 tvItemTitle.text = articles.title
+                ivItemImage.loadImage(articles.urlToImage)
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            ItemNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(view)
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Articles)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = listArticles[position]
-        holder.itemView.setOnClickListener{
-            onItemClick(item)
-        }
-        holder.bind(listArticles[position])
-    }
+    companion object {
+        val DIFF_CALLBACK: DiffUtil.ItemCallback<Articles> =
+            object : DiffUtil.ItemCallback<Articles>() {
+                override fun areItemsTheSame(oldItem: Articles, newItem: Articles): Boolean {
+                    return oldItem.title == newItem.title
+                }
 
-    override fun getItemCount(): Int = listArticles.size
+                @SuppressLint("DiffUtilEquals")
+                override fun areContentsTheSame(oldItem: Articles, newItem: Articles): Boolean {
+                    return oldItem == newItem
+                }
+            }
+    }
 }
