@@ -1,6 +1,8 @@
 package com.and.news.utils
 
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.and.news.R
 import com.bumptech.glide.Glide
@@ -31,5 +33,9 @@ object MyCompanion {
     fun RecyclerView.showLoading(isLoading: Boolean) {
         val skeleton: Skeleton = this.applySkeleton(R.layout.item_news)
         if (isLoading) skeleton.showSkeleton() else skeleton.showOriginal()
+    }
+
+    fun TextView.showText(isEmpty: Boolean) {
+        if (isEmpty) this.setText(R.string.empty_bookmark) else this.text = ""
     }
 }

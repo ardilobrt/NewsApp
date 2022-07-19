@@ -1,13 +1,20 @@
 package com.and.news.ui.bookmark
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.and.news.data.local.entity.Articles
+import com.and.news.data.repository.ArticlesRepository
 
-class BookmarkViewModel : ViewModel() {
+class BookmarkViewModel(private val articlesRepository: ArticlesRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    private val _listBookmark = articlesRepository.getBookmarkedArticles()
+    val listBookmark: LiveData<List<Articles>> = _listBookmark
+
+    fun saveBookmark(articles: Articles) {
+        articlesRepository.setBookmarkArticles(articles, true)
     }
-    val text: LiveData<String> = _text
+
+    fun deleteBookmark(articles: Articles) {
+        articlesRepository.setBookmarkArticles(articles, false)
+    }
 }

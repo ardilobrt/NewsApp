@@ -1,14 +1,16 @@
 package com.and.news.adapter
 
 import android.annotation.SuppressLint
-import android.view.*
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.and.news.R
-import com.and.news.data.local.entity.Articles
 import com.and.news.adapter.ArticlesAdapter.MyViewHolder
+import com.and.news.data.local.entity.Articles
 import com.and.news.databinding.ItemNewsBinding
-import com.and.news.utils.DateFormatter
 import com.and.news.utils.MyCompanion.loadImage
 
 class ArticlesAdapter(private val onBookmarkClick: (Articles) -> Unit) :
