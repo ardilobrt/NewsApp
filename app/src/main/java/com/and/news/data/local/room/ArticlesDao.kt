@@ -10,7 +10,7 @@ interface ArticlesDao {
     fun getArticles(): LiveData<List<Articles>>
 
     @Query("SELECT * FROM articles WHERE isBookmarked = 1")
-    fun getBookmarkedNews(): LiveData<List<Articles>>
+    fun getBookmarkedArticles(): LiveData<List<Articles>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertArticles(articles: List<Articles>)

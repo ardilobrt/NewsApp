@@ -71,6 +71,10 @@ class ArticlesRepository private constructor(
         }
     }
 
+    fun getBookmarkedArticles(): LiveData<List<Articles>> {
+        return articlesDao.getBookmarkedArticles()
+    }
+
     companion object {
         private const val LOCAL_IDN = "id"
 
