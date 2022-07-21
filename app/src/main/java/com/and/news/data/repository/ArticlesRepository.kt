@@ -1,7 +1,7 @@
 package com.and.news.data.repository
 
 import androidx.lifecycle.*
-import com.and.news.data.MyResult
+import com.and.news.data.Event
 import com.and.news.data.local.entity.Articles
 import com.and.news.data.local.room.ArticlesDao
 import com.and.news.data.remote.api.ApiService
@@ -10,16 +10,15 @@ import com.and.news.utils.AppExecutors
 import com.and.news.utils.DateFormatter
 import retrofit2.*
 
-class ArticlesRepository private constructor(
+class ArticlesRepository(
     private val apiService: ApiService,
     private val articlesDao: ArticlesDao,
     private val appExecutors: AppExecutors
 ) {
-    private val _listArticles = MediatorLiveData<MyResult<List<Articles>>>()
-    val listArticles: LiveData<MyResult<List<Articles>>> get() = _listArticles
+    val listArticles: MediatorLiveData<List<Articles>> = MediatorLiveData()
+    val errorMessage: MutableLiveData<Event<String>> = MutableLiveData()
 
     fun getArticlesFromApi() {
-        _listArticles.value = MyResult.Loading
         val client = apiService.getNewsByLocal(LOCAL_IDN)
         client.enqueue(object : Callback<ArticlesResponse> {
             override fun onResponse(
@@ -28,7 +27,7 @@ class ArticlesRepository private constructor(
             ) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()?.articles
-                    val articlesList = ArrayList<Articles>()
+                    val articlesList = mutableListOf<Articles>()
                     appExecutors.diskIO.execute {
                         responseBody?.forEach {
                             val isBookmarked = articlesDao.isNewsBookmarked(it.title.toString())
@@ -47,11 +46,11 @@ class ArticlesRepository private constructor(
                         articlesDao.deleteAll()
                         articlesDao.insertArticles(articlesList)
                     }
-                }
+                } else errorMessage.value = Event("Something Error")
             }
 
             override fun onFailure(call: Call<ArticlesResponse>, t: Throwable) {
-                _listArticles.value = MyResult.Error(t.message.toString())
+                errorMessage.value = Event(t.message.toString())
             }
         })
         setArticlesToLocal()
@@ -59,8 +58,8 @@ class ArticlesRepository private constructor(
 
     private fun setArticlesToLocal() {
         val localData = articlesDao.getArticles()
-        _listArticles.addSource(localData) {
-            _listArticles.value = MyResult.Success(it)
+        listArticles.addSource(localData) {
+            listArticles.value = it.toMutableList()
         }
     }
 

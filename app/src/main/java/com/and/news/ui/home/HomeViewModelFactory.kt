@@ -5,7 +5,7 @@ import androidx.lifecycle.*
 import com.and.news.data.repository.ArticlesRepository
 import com.and.news.di.Injection
 
-class HomeViewModelFactory private constructor(private val articlesRepository: ArticlesRepository) :
+class HomeViewModelFactory(private val articlesRepository: ArticlesRepository) :
     ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
