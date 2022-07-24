@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.and.news.data.remote.model.SignInResponse
-import com.and.news.ui.MainActivity
 import com.and.news.utils.SharedPrefManager
 import com.and.news.databinding.ActivitySignInBinding
 import com.and.news.ui.auth.register.SignUpActivity

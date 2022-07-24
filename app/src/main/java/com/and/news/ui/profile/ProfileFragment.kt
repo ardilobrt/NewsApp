@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.and.news.utils.SharedPrefManager
+import androidx.navigation.fragment.findNavController
+import com.and.news.R
 import com.and.news.databinding.FragmentProfileBinding
+import com.and.news.utils.SharedPrefManager
 
 class ProfileFragment : Fragment() {
 
@@ -25,15 +27,25 @@ class ProfileFragment : Fragment() {
     ): View {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val isLogin = SharedPrefManager.getIsOnLogin(requireActivity())
+        if (isLogin) {
+            observerValue()
+        } else findNavController().navigate(R.id.action_navigation_profile_to_signInActivity)
+    }
+
+    private fun observerValue() {
         val username = SharedPrefManager.getUserName(requireContext())
         viewModel.showUser(username.toString())
 
         viewModel.text.observe(viewLifecycleOwner) {
             binding.textProfile.text = it
         }
-        return root
     }
 
     override fun onDestroyView() {
