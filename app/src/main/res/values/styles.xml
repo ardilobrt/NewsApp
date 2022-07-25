@@ -83,6 +83,11 @@
         <item name="android:background">@drawable/ic_input_auth</item>
         <item name="android:drawablePadding">16dp</item>
         <item name="android:padding">16dp</item>
+        <item name="fontFamily">@font/sfprodisplaymedium</item>
+    </style>
+
+    <style name="TextInputDisabled" parent="TextInput">
+        <item name="fontFamily">@font/sfprodisplaybold</item>
     </style>
 
     <style name="TextContent.ItemCategory" parent="TextContent.Description">

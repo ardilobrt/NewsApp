@@ -27,8 +27,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_user_name"
-            style="@style/TextInput"
+            style="@style/TextInputDisabled"
             android:drawableStart="@drawable/custom_person_icon"
+            android:enabled="false"
             android:hint="@string/username"
             android:inputType="text"
             android:maxLength="12" />
@@ -46,8 +47,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_email"
-            style="@style/TextInput"
+            style="@style/TextInputDisabled"
             android:drawableStart="@drawable/custom_email_icon"
+            android:enabled="false"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:maxLength="20" />
