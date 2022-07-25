@@ -8,7 +8,7 @@ object SharedPrefManager {
     private const val SHARE_PREF_FILENAME = "my_shared_pref"
     private const val KEY_IS_ONBOARDING_SHOWN = "user_data_onboarding_shown"
     private const val KEY_IS_ON_LOGIN = "user_on_login"
-    private const val KEY_NAME_USER = "user_data_name"
+    private const val TOKEN_USER = "user_token"
 
     private fun getSharedPref(context: Context): SharedPreferences {
         return context.getSharedPreferences(SHARE_PREF_FILENAME, 0)
@@ -34,13 +34,13 @@ object SharedPrefManager {
         return getSharedPref(context).getBoolean(KEY_IS_ON_LOGIN, false)
     }
 
-    fun saveUserName(context: Context, value: String) {
+    fun saveUserToken(context: Context, value: String) {
         val editor = getSharedPref(context).edit()
-        editor.putString(KEY_NAME_USER, value)
+        editor.putString(TOKEN_USER, value)
         editor.apply()
     }
 
-    fun getUserName(context: Context) : String? {
-        return getSharedPref(context).getString(KEY_NAME_USER, "")
+    fun getUserToken(context: Context) : String? {
+        return getSharedPref(context).getString(TOKEN_USER, "")
     }
 }

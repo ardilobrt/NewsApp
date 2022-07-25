@@ -1,5 +1,6 @@
 package com.and.news.data.remote.api
 
+import android.content.Context
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,24 +12,25 @@ object ApiConfig {
     private const val USER_URL = "https://binar-gdd-cc8.herokuapp.com/api/v1/"
     private lateinit var retrofit: Retrofit
 
-    fun getArticleService(): ArticleService {
+    fun getArticleService(context: Context): ArticleService {
 
-        retrofit = setRetrofit(BASE_URL)
+        retrofit = setRetrofit(BASE_URL, context)
         return retrofit.create(ArticleService::class.java)
     }
 
-    fun getUserService(): UserService {
-        retrofit = setRetrofit(USER_URL)
+    fun getUserService(context: Context): UserService {
+        retrofit = setRetrofit(USER_URL, context)
         return retrofit.create(UserService::class.java)
     }
 
-    private fun setRetrofit(url: String): Retrofit {
+    private fun setRetrofit(url: String, context: Context): Retrofit {
 
         val loggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
 
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(AuthInterceptor(context))
             .build()
 
         return Retrofit.Builder()

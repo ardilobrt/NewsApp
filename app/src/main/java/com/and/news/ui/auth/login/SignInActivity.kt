@@ -31,7 +31,7 @@ class SignInActivity : AppCompatActivity() {
             val password = inputPassword.text.toString()
 
             val signInResponse = SignInResponse(email, password)
-            viewModel.signInUser(signInResponse)
+            viewModel.signInUser(signInResponse, this@SignInActivity)
         }
 
         btnDontHaveAccount.setOnClickListener {
@@ -65,6 +65,10 @@ class SignInActivity : AppCompatActivity() {
             event.getContentIfNotHandled().let { isLoading ->
                 binding.progressBar.visibility = if (isLoading == true) View.VISIBLE else View.GONE
             }
+        }
+
+        viewModel.token.observe(this) {
+            SharedPrefManager.saveUserToken(this, it)
         }
     }
 
