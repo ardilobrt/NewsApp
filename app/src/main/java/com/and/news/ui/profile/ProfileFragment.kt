@@ -9,13 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.and.news.R
-import com.and.news.databinding.ActivityMainBinding
+import com.and.news.data.remote.model.SignInResponse
 import com.and.news.databinding.FragmentProfileBinding
 import com.and.news.utils.SharedPrefManager
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -42,9 +43,12 @@ class ProfileFragment : Fragment() {
     private fun observerValue() {
 
         val viewModel: ProfileViewModel by viewModels()
+        val username = SharedPrefManager.getEmail(requireActivity())
+        val password = SharedPrefManager.getPassword(requireActivity())
+        val signInResponse = SignInResponse(username.toString(), password.toString())
 
         binding.progressBar.visibility = View.VISIBLE
-        viewModel.getUser(requireActivity())
+        viewModel.getUser(requireActivity(), signInResponse)
 
         viewModel.data.observe(viewLifecycleOwner) {
             binding.apply {

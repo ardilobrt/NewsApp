@@ -14,6 +14,8 @@ import com.and.news.ui.auth.register.SignUpActivity
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
     private val viewModel: SignInViewModel by viewModels()
+    private lateinit var email: String
+    private lateinit var password: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +29,8 @@ class SignInActivity : AppCompatActivity() {
     private fun setComponent() = with(binding) {
 
         btnSignIn.setOnClickListener {
-            val email = inputEmail.text.toString()
-            val password = inputPassword.text.toString()
+            email = inputEmail.text.toString()
+            password = inputPassword.text.toString()
 
             val signInResponse = SignInResponse(email, password)
             viewModel.signInUser(signInResponse, this@SignInActivity)
@@ -48,6 +50,8 @@ class SignInActivity : AppCompatActivity() {
                 if (it != null) {
                     showMessage(it)
                     SharedPrefManager.setIsOnLogin(this@SignInActivity, true)
+                    SharedPrefManager.saveEmail(this, email)
+                    SharedPrefManager.savePassword(this, password)
                     finish()
                 }
             }
