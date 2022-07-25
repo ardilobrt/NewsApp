@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.and.news.data.Event
 import com.and.news.data.remote.api.ApiConfig
+import com.and.news.data.remote.model.AuthResponse
 import com.and.news.data.remote.model.SignInResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,18 +25,21 @@ class SignInViewModel : ViewModel() {
 
         isLoading.value = Event(true)
         val client = ApiConfig.getUserService().loginUser(signInResponse)
-        client.enqueue(object : Callback<SignInResponse> {
+        client.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(
-                call: Call<SignInResponse>,
-                response: Response<SignInResponse>
+                call: Call<AuthResponse>,
+                response: Response<AuthResponse>
             ) {
                 isLoading.value = Event(false)
                 if (response.isSuccessful) {
-                    dataSuccess.value = Event("Login Success")
-                } else dataError.value = Event("Login Failed")
+                    val username = response.body()?.data?.username
+                    dataSuccess.value = Event("Login Success $username")
+                } else {
+                    dataError.value = Event("Login Failed")
+                }
             }
 
-            override fun onFailure(call: Call<SignInResponse>, t: Throwable) {
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
                 isLoading.value = Event(false)
                 dataError.value = Event(t.message.toString())
             }
