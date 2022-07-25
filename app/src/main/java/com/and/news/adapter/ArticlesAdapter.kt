@@ -33,18 +33,8 @@ class ArticlesAdapter(private val onBookmarkClick: (Articles) -> Unit) :
 
         val ivBookmark = holder.binding.ivBookmark
         if (articles.isBookmarked) {
-            ivBookmark.setImageDrawable(
-                ContextCompat.getDrawable(
-                    ivBookmark.context,
-                    R.drawable.ic_bookmarked
-                )
-            )
-        } else ivBookmark.setImageDrawable(
-            ContextCompat.getDrawable(
-                ivBookmark.context,
-                R.drawable.ic_bookmark
-            )
-        )
+            ivBookmark.setImageResource(R.drawable.ic_bookmarked)
+        } else ivBookmark.setImageResource(R.drawable.ic_bookmark)
 
         ivBookmark.setOnClickListener {
             onBookmarkClick(articles)

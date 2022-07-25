@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.and.news.data.repository.ArticlesRepository
 import com.and.news.di.Injection
 
-class BookmarkViewModelFactory private constructor(private val articlesRepository: ArticlesRepository) :
+class BookmarkViewModelFactory(private val articlesRepository: ArticlesRepository) :
     ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
