@@ -9,12 +9,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.and.news.R
 import com.and.news.adapter.ArticlesAdapter
 import com.and.news.data.local.entity.Articles
 import com.and.news.databinding.FragmentHomeBinding
 import com.and.news.ui.detail.DetailNewsActivity
 import com.and.news.utils.MyCompanion
+import com.and.news.utils.SharedPrefManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -48,9 +51,14 @@ class HomeFragment : Fragment() {
     private fun setupComponent() {
 
         articlesAdapter = ArticlesAdapter { article ->
-            if (article.isBookmarked) {
-                viewModel.deleteBookmark(article)
-            } else viewModel.saveBookmark(article)
+            val isLogin = SharedPrefManager.getIsOnLogin(requireActivity())
+            if (!isLogin) {
+                findNavController().navigate(R.id.action_navigation_home_to_signInActivity)
+            } else {
+                if (article.isBookmarked) {
+                    viewModel.deleteBookmark(article)
+                } else viewModel.saveBookmark(article)
+            }
         }
 
         binding.rvNews.apply {

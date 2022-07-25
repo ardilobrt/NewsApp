@@ -6,14 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.and.news.R
 import com.and.news.adapter.ArticlesAdapter
 import com.and.news.data.local.entity.Articles
 import com.and.news.databinding.FragmentBookmarkBinding
 import com.and.news.ui.detail.DetailNewsActivity
+import com.and.news.ui.profile.AuthorizedFragment
 import com.and.news.utils.MyCompanion
 import com.and.news.utils.MyCompanion.showText
+import com.and.news.utils.SharedPrefManager
 
 class BookmarkFragment : Fragment() {
 
@@ -35,6 +40,15 @@ class BookmarkFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val isLogin = SharedPrefManager.getIsOnLogin(requireActivity())
+        if (isLogin) {
+            setBookmarkView()
+        } else {
+            findNavController().navigate(R.id.action_navigation_bookmark_to_signInActivity)
+        }
+    }
+
+    private fun setBookmarkView() {
         val factory = BookmarkViewModelFactory.getInstance(requireActivity())
         val viewModel: BookmarkViewModel by viewModels { factory }
 

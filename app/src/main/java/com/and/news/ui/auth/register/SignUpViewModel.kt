@@ -3,6 +3,7 @@ package com.and.news.ui.auth.register
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.and.news.data.remote.api.ApiConfig
+import com.and.news.data.remote.model.AuthResponse
 import com.and.news.data.remote.model.SignUpResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,10 +27,10 @@ class SignUpViewModel : ViewModel() {
 
         isLoading.value = true
         val client = ApiConfig.getUserService().registerUser(signUpResponse)
-        client.enqueue(object : Callback<SignUpResponse> {
+        client.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(
-                call: Call<SignUpResponse>,
-                response: Response<SignUpResponse>
+                call: Call<AuthResponse>,
+                response: Response<AuthResponse>
             ) {
                 isLoading.value = false
                 if (response.isSuccessful) {
@@ -37,7 +38,7 @@ class SignUpViewModel : ViewModel() {
                 } else dataError.value = "Register Failed"
             }
 
-            override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
                 isLoading.value = false
                 dataSuccess.value = t.message
             }
