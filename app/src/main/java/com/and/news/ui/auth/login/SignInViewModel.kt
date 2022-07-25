@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.and.news.data.Event
 import com.and.news.data.remote.api.ApiConfig
 import com.and.news.data.remote.model.AuthResponse
-import com.and.news.data.remote.model.Data
 import com.and.news.data.remote.model.SignInResponse
 import retrofit2.Call
 import retrofit2.Callback

@@ -38,6 +38,11 @@ class ProfileFragment : Fragment() {
         if (isLogin) {
             observerValue()
         } else findNavController().navigate(R.id.action_navigation_profile_to_signInActivity)
+
+        binding.btnLogOut.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_navigation_home)
+            SharedPrefManager.setIsOnLogin(requireActivity(), false)
+        }
     }
 
     private fun observerValue() {

@@ -34,4 +34,5 @@
     <string name="error_result" translatable="false">Something wrong, Please check your connection</string>
     <string name="empty_bookmark" translatable="false">Please Set Bookmark from Articles</string>
     <string name="play_media" translatable="false">Play Media</string>
+    <string name="log_out" translatable="false">Log Out</string>
 </resources>

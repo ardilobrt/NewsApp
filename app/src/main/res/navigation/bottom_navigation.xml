@@ -36,6 +36,9 @@
             android:id="@+id/action_navigation_profile_to_signInActivity"
             app:destination="@id/signInActivity"
             app:popUpTo="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
     <activity
         android:id="@+id/signInActivity"
