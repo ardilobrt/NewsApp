@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.MediaController
+import com.and.news.R
 import com.and.news.databinding.ActivityVideoRawBinding
 
 class VideoRawActivity : AppCompatActivity() {
@@ -17,12 +18,9 @@ class VideoRawActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        // set video path dari video yang ingin di jalankan
         val path = "android.resource://$packageName/${R.raw.example_video_footage}"
 
 
-
-        //set path tadi ke URI
         binding.videoView.setVideoURI(Uri.parse(path))
 
 

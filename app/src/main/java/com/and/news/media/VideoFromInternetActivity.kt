@@ -20,7 +20,6 @@ class VideoFromInternetActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        // Set up the media controller widget and attach it to the video view.
         val controller = MediaController(this)
         controller.setMediaPlayer(binding.videoView)
         binding.videoView.setMediaController(controller)

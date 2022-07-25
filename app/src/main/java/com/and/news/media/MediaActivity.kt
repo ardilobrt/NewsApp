@@ -56,6 +56,13 @@ class MediaActivity : AppCompatActivity() {
                 else
                     Toast.makeText(this, "Soundpool belum diload", Toast.LENGTH_SHORT).show()
             }
+
+            binding.btnPlayRaw.setOnClickListener {
+                val intent = Intent(this, VideoRawActivity::class.java)
+
+                startActivity(intent)
+            }
+
             binding.btnPlayInternet.setOnClickListener {
 
                 val intent = Intent(this, VideoFromInternetActivity::class.java)
