@@ -44,7 +44,7 @@ class ProfileFragment : Fragment() {
         viewModel.showUser(username.toString())
 
         viewModel.text.observe(viewLifecycleOwner) {
-            binding.textProfile.text = it
+            //binding.textProfile.text = it
         }
     }
 
