@@ -1,57 +1,55 @@
 package com.and.news.ui.auth.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
-import com.and.news.data.local.room.UserDatabase
-import com.and.news.data.local.entity.Users
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import com.and.news.data.remote.model.SignUpResponse
 import com.and.news.databinding.ActivitySignUpBinding
 import com.and.news.ui.auth.login.SignInActivity
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
-class SignUpActivity : AppCompatActivity(), SignUpView {
+class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
-    private lateinit var presenter: SignUpPresenterImp
-    private lateinit var users: Users
-    private var database: UserDatabase? = null
+    private val viewModel: SignUpViewModel by viewModels()
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
-        presenter = SignUpPresenterImp(this)
         setContentView(binding.root)
 
-        database = UserDatabase.getInstance(this)
+        setupComponent()
+        observerValue()
+    }
 
-        binding.apply {
+    private fun setupComponent() = with(binding) {
+        btnSignUp.setOnClickListener {
+            val username = inputUserName.text.toString()
+            val email = inputEmail.text.toString()
+            val password = inputPassword.text.toString()
 
-            btnSignUp.setOnClickListener {
-                val username = inputUserName.text.toString()
-                val email = inputEmail.text.toString()
-                val password = inputPassword.text.toString()
+            val signUpResponse = SignUpResponse(email, password, username)
+            viewModel.signUpUser(signUpResponse)
+        }
 
-                if (presenter.checkEmpty(username, email, password)) {
-                    users = Users(null, username, email, password)
+        btnHaveAccount.setOnClickListener {
+            goToSignIn()
+        }
+    }
 
-                    GlobalScope.launch {
-                        val result = database?.userDao()?.insertUser(users)
-                        runOnUiThread {
-                            if (result != 0.toLong()) {
-                                presenter.setSuccess(true)
-                                goToSignIn()
-                            } else presenter.setSuccess(false)
-                        }
-                    }
-                }
-            }
+    private fun observerValue() {
+        viewModel.dataSuccess.observe(this) {
+            showMessage(it)
+            goToSignIn()
+        }
 
-            btnHaveAccount.setOnClickListener {
-                goToSignIn()
-            }
+        viewModel.dataError.observe(this) {
+            showMessage(it)
+        }
+
+        viewModel.isLoading.observe(this) { isLoading ->
+            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
     }
 
@@ -62,18 +60,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
         }
     }
 
-    override fun showMessage(message: String) {
+    private fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun clearField() {
-        binding.apply {
-            inputUserName.clearFocus()
-            inputEmail.clearFocus()
-            inputPassword.clearFocus()
-            inputUserName.text?.clear()
-            inputEmail.text?.clear()
-            inputPassword.text?.clear()
-        }
     }
 }
