@@ -1,14 +1,18 @@
 package com.and.news.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.and.news.R
 import com.and.news.databinding.ActivityMainBinding
+import com.and.news.media.MediaActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +31,20 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNav.setupWithNavController(navController)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_action_bar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.play_media) {
+            Intent(this, MediaActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+        return true
     }
 
     override fun onPause() {

@@ -14,15 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndNews"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".VideoRawActivity"
+            android:name=".media.VideoRawActivity"
             android:exported="false" />
         <activity
-            android:name=".VideoFromInternetActivity"
+            android:name=".media.VideoFromInternetActivity"
             android:exported="false" />
         <activity
-            android:name=".MediaActivity"
+            android:name=".media.MediaActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
