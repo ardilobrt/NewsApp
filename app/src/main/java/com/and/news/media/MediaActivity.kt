@@ -18,7 +18,6 @@ class MediaActivity : AppCompatActivity() {
     private var loaded = false
     private var soundId = 0
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMediaBinding.inflate(layoutInflater)

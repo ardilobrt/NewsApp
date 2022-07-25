@@ -11,7 +11,6 @@ class VideoFromInternetActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityVideoFromInternetBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVideoFromInternetBinding.inflate(layoutInflater)
