@@ -1,6 +1,7 @@
 package com.and.news.media
 
 import android.content.Context
+import android.content.Intent
 import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.SoundPool
@@ -26,7 +27,8 @@ class MediaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_media)
+        binding = ActivityMediaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.btnSound.setOnClickListener{
             val audioAttributes = AudioAttributes.Builder()
@@ -53,6 +55,12 @@ class MediaActivity : AppCompatActivity() {
                     soundPool.play(soundId, volume, volume, 1,0,1f)
                 else
                     Toast.makeText(this, "Soundpool belum diload", Toast.LENGTH_SHORT).show()
+            }
+            binding.btnPlayInternet.setOnClickListener {
+
+                val intent = Intent(this, VideoFromInternetActivity::class.java)
+
+                startActivity(intent)
             }
         }
     }

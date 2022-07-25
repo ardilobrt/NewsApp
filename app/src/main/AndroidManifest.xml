@@ -16,6 +16,12 @@
         android:theme="@style/Theme.AndNews"
         tools:targetApi="31">
         <activity
+            android:name=".VideoRawActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VideoFromInternetActivity"
+            android:exported="false" />
+        <activity
             android:name=".MediaActivity"
             android:exported="false" />
         <activity

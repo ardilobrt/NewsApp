@@ -314,7 +314,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/bookmark/baseline_bookmark_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/play_arrow/baseline_play_arrow_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -324,8 +324,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="55a737" />
-                            <entry key="outputName" value="ic_baseline_bookmark_24" />
+                            <entry key="color" value="375ea7" />
+                            <entry key="outputName" value="ic_baseline_play_arrow_24" />
                             <entry key="sourceFile" value="D:\My Documents\Android_Dev\Assets\asset_andnews\ic_bottom_profile.svg" />
                           </map>
                         </option>
