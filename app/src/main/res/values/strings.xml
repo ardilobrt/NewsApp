@@ -33,4 +33,5 @@
     <string name="save_bookmark" translatable="false">Save bookmark?</string>
     <string name="error_result" translatable="false">Something wrong, Please check your connection</string>
     <string name="empty_bookmark" translatable="false">Please Set Bookmark from Articles</string>
+    <string name="play_media" translatable="false">Play Media</string>
 </resources>

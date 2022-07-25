@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.faltenreich:skeletonlayout:4.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/bd7009ee90f7c41c2d9413979c413c01/transformed/skeletonlayout-4.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bd7009ee90f7c41c2d9413979c413c01/transformed/skeletonlayout-4.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bd7009ee90f7c41c2d9413979c413c01/transformed/skeletonlayout-4.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/920aceffa1168812e23989507cec65ae/transformed/skeletonlayout-4.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/920aceffa1168812e23989507cec65ae/transformed/skeletonlayout-4.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/920aceffa1168812e23989507cec65ae/transformed/skeletonlayout-4.0.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.faltenreich/skeletonlayout/4.0.0/25096e7b626c738d06ce26fba16c6c692696cd/skeletonlayout-4.0.0-javadoc.jar!/" />
