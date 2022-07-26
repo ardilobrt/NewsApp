@@ -8,7 +8,7 @@ import com.and.news.data.Event
 import com.and.news.data.remote.api.ApiConfig
 import com.and.news.data.remote.model.AuthResponse
 import com.and.news.data.remote.model.Data
-import com.and.news.data.remote.model.SignInResponse
+import com.and.news.data.remote.model.SignInRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +18,7 @@ class ProfileViewModel : ViewModel() {
     val data: MutableLiveData<Data> = MutableLiveData()
     val dataError: MutableLiveData<Event<String>> = MutableLiveData()
 
-    fun getUser(context: Context, signInResponse: SignInResponse) {
+    fun getUser(context: Context, signInRequest: SignInRequest) {
         val client = ApiConfig.getUserService(context).getUser()
         client.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
@@ -27,7 +27,7 @@ class ProfileViewModel : ViewModel() {
                     data.value = responseBody
                 } else {
                     if (response.code() == 403) {
-                        getToken(context, signInResponse)
+                        getToken(context, signInRequest)
                     }
                 }
             }
@@ -39,8 +39,8 @@ class ProfileViewModel : ViewModel() {
         })
     }
 
-    private fun getToken(context: Context, signInResponse: SignInResponse) {
-        val client = ApiConfig.getUserService(context).loginUser(signInResponse)
+    private fun getToken(context: Context, signInRequest: SignInRequest) {
+        val client = ApiConfig.getUserService(context).loginUser(signInRequest)
         client.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(
                 call: Call<AuthResponse>,

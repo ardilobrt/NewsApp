@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.and.news.data.remote.model.SignUpResponse
+import com.and.news.data.remote.model.SignUpRequest
 import com.and.news.databinding.ActivitySignUpBinding
 import com.and.news.ui.auth.login.SignInActivity
 
@@ -29,8 +29,8 @@ class SignUpActivity : AppCompatActivity() {
             val email = inputEmail.text.toString()
             val password = inputPassword.text.toString()
 
-            val signUpResponse = SignUpResponse(email, password, username)
-            viewModel.signUpUser(signUpResponse, this@SignUpActivity)
+            val signUpRequest = SignUpRequest(email, password, username)
+            viewModel.signUpUser(signUpRequest, this@SignUpActivity)
         }
 
         btnHaveAccount.setOnClickListener {

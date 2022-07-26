@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.and.news.data.remote.api.ApiConfig
 import com.and.news.data.remote.model.AuthResponse
-import com.and.news.data.remote.model.SignUpResponse
+import com.and.news.data.remote.model.SignUpRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,18 +16,18 @@ class SignUpViewModel : ViewModel() {
     val dataError: MutableLiveData<String> = MutableLiveData()
     val isLoading: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun signUpUser(signUpResponse: SignUpResponse, context: Context) {
+    fun signUpUser(signUpRequest: SignUpRequest, context: Context) {
 
-        if (signUpResponse.username.isEmpty()
-            || signUpResponse.email.isEmpty()
-            || signUpResponse.password.isEmpty()
+        if (signUpRequest.username.isEmpty()
+            || signUpRequest.email.isEmpty()
+            || signUpRequest.password.isEmpty()
         ) {
             dataError.value = "Please Fill All Field"
             return
         }
 
         isLoading.value = true
-        val client = ApiConfig.getUserService(context).registerUser(signUpResponse)
+        val client = ApiConfig.getUserService(context).registerUser(signUpRequest)
         client.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(
                 call: Call<AuthResponse>,

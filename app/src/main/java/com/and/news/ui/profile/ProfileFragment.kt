@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.and.news.R
-import com.and.news.data.remote.model.SignInResponse
+import com.and.news.data.remote.model.SignInRequest
 import com.and.news.databinding.FragmentProfileBinding
 import com.and.news.utils.SharedPrefManager
 
@@ -50,10 +50,10 @@ class ProfileFragment : Fragment() {
         val viewModel: ProfileViewModel by viewModels()
         val username = SharedPrefManager.getEmail(requireActivity())
         val password = SharedPrefManager.getPassword(requireActivity())
-        val signInResponse = SignInResponse(username.toString(), password.toString())
+        val signInRequest = SignInRequest(username.toString(), password.toString())
 
         binding.progressBar.visibility = View.VISIBLE
-        viewModel.getUser(requireActivity(), signInResponse)
+        viewModel.getUser(requireActivity(), signInRequest)
 
         viewModel.data.observe(viewLifecycleOwner) {
             binding.apply {

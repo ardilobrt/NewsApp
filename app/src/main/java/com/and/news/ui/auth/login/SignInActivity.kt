@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.and.news.data.remote.model.SignInResponse
+import com.and.news.data.remote.model.SignInRequest
 import com.and.news.utils.SharedPrefManager
 import com.and.news.databinding.ActivitySignInBinding
 import com.and.news.ui.auth.register.SignUpActivity
@@ -32,8 +32,8 @@ class SignInActivity : AppCompatActivity() {
             email = inputEmail.text.toString()
             password = inputPassword.text.toString()
 
-            val signInResponse = SignInResponse(email, password)
-            viewModel.signInUser(signInResponse, this@SignInActivity)
+            val signInRequest = SignInRequest(email, password)
+            viewModel.signInUser(signInRequest, this@SignInActivity)
         }
 
         btnDontHaveAccount.setOnClickListener {

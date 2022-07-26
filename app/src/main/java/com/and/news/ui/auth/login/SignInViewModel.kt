@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.and.news.data.Event
 import com.and.news.data.remote.api.ApiConfig
 import com.and.news.data.remote.model.AuthResponse
-import com.and.news.data.remote.model.SignInResponse
+import com.and.news.data.remote.model.SignInRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,15 +18,15 @@ class SignInViewModel : ViewModel() {
     val isLoading: MutableLiveData<Event<Boolean>> = MutableLiveData()
     val token: MutableLiveData<String> = MutableLiveData()
 
-    fun signInUser(signInResponse: SignInResponse, context: Context) {
+    fun signInUser(signInRequest: SignInRequest, context: Context) {
 
-        if (signInResponse.email.isEmpty() || signInResponse.password.isEmpty()) {
+        if (signInRequest.email.isEmpty() || signInRequest.password.isEmpty()) {
             dataError.value = Event("Please Fill All Field")
             return
         }
 
         isLoading.value = Event(true)
-        val client = ApiConfig.getUserService(context).loginUser(signInResponse)
+        val client = ApiConfig.getUserService(context).loginUser(signInRequest)
         client.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(
                 call: Call<AuthResponse>,
