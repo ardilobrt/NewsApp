@@ -8,7 +8,7 @@ import com.and.news.utils.AppExecutors
 
 object Injection {
     fun provideRepository(context: Context): ArticlesRepository {
-        val apiService = ApiConfig.getArticleService()
+        val apiService = ApiConfig.getArticleService(context)
         val database = ArticlesDatabase.getInstance(context)
         val dao = database.articleDao()
         val appExecutors = AppExecutors()

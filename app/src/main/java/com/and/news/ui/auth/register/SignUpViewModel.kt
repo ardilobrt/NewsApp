@@ -1,5 +1,6 @@
 package com.and.news.ui.auth.register
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.and.news.data.remote.api.ApiConfig
@@ -15,7 +16,7 @@ class SignUpViewModel : ViewModel() {
     val dataError: MutableLiveData<String> = MutableLiveData()
     val isLoading: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun signUpUser(signUpResponse: SignUpResponse) {
+    fun signUpUser(signUpResponse: SignUpResponse, context: Context) {
 
         if (signUpResponse.username.isEmpty()
             || signUpResponse.email.isEmpty()
@@ -26,7 +27,7 @@ class SignUpViewModel : ViewModel() {
         }
 
         isLoading.value = true
-        val client = ApiConfig.getUserService().registerUser(signUpResponse)
+        val client = ApiConfig.getUserService(context).registerUser(signUpResponse)
         client.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(
                 call: Call<AuthResponse>,

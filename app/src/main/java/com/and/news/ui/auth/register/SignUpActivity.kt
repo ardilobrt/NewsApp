@@ -30,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
             val password = inputPassword.text.toString()
 
             val signUpResponse = SignUpResponse(email, password, username)
-            viewModel.signUpUser(signUpResponse)
+            viewModel.signUpUser(signUpResponse, this@SignUpActivity)
         }
 
         btnHaveAccount.setOnClickListener {

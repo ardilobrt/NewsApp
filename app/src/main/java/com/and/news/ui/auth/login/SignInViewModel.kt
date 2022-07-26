@@ -1,5 +1,6 @@
 package com.and.news.ui.auth.login
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.and.news.data.Event
@@ -15,8 +16,9 @@ class SignInViewModel : ViewModel() {
     val dataSuccess: MutableLiveData<Event<String>> = MutableLiveData()
     val dataError: MutableLiveData<Event<String>> = MutableLiveData()
     val isLoading: MutableLiveData<Event<Boolean>> = MutableLiveData()
+    val token: MutableLiveData<String> = MutableLiveData()
 
-    fun signInUser(signInResponse: SignInResponse) {
+    fun signInUser(signInResponse: SignInResponse, context: Context) {
 
         if (signInResponse.email.isEmpty() || signInResponse.password.isEmpty()) {
             dataError.value = Event("Please Fill All Field")
@@ -24,7 +26,7 @@ class SignInViewModel : ViewModel() {
         }
 
         isLoading.value = Event(true)
-        val client = ApiConfig.getUserService().loginUser(signInResponse)
+        val client = ApiConfig.getUserService(context).loginUser(signInResponse)
         client.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(
                 call: Call<AuthResponse>,
@@ -32,8 +34,9 @@ class SignInViewModel : ViewModel() {
             ) {
                 isLoading.value = Event(false)
                 if (response.isSuccessful) {
-                    val username = response.body()?.data?.username
-                    dataSuccess.value = Event("Login Success $username")
+                    val responseBody = response.body()?.data
+                    token.value = responseBody?.token
+                    dataSuccess.value = Event("Login Success ${responseBody?.username}")
                 } else {
                     dataError.value = Event("Login Failed")
                 }
