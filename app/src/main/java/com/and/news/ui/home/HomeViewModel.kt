@@ -1,5 +1,6 @@
 package com.and.news.ui.home
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.and.news.data.Event
@@ -11,7 +12,7 @@ class HomeViewModel(private val articlesRepository: ArticlesRepository) : ViewMo
     val listArticles: MutableLiveData<List<Articles>> = articlesRepository.listArticles
     val errorMessage: MutableLiveData<Event<String>> = articlesRepository.errorMessage
 
-    fun getArticles() = articlesRepository.getArticlesFromApi()
+    fun getArticles(country: String) = articlesRepository.getArticlesFromApi(country)
 
     fun saveBookmark(articles: Articles) {
         articlesRepository.setBookmarkArticles(articles, true)

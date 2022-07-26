@@ -18,8 +18,8 @@ class ArticlesRepository(
     val listArticles: MediatorLiveData<List<Articles>> = MediatorLiveData()
     val errorMessage: MutableLiveData<Event<String>> = MutableLiveData()
 
-    fun getArticlesFromApi() {
-        val client = articleService.getNewsByLocal(LOCAL_IDN)
+    fun getArticlesFromApi(country: String) {
+        val client = articleService.getNewsByLocal(country)
         client.enqueue(object : Callback<ArticlesResponse> {
             override fun onResponse(
                 call: Call<ArticlesResponse>,
@@ -39,6 +39,7 @@ class ArticlesRepository(
                                 it.urlToImage.toString(),
                                 it.description,
                                 it.url.toString(),
+                                country,
                                 isBookmarked
                             )
                             articlesList.add(articles)
@@ -53,11 +54,11 @@ class ArticlesRepository(
                 errorMessage.value = Event(t.message.toString())
             }
         })
-        setArticlesToLocal()
+        setArticlesToLocal(country)
     }
 
-    private fun setArticlesToLocal() {
-        val localData = articlesDao.getArticles()
+    private fun setArticlesToLocal(country: String) {
+        val localData = articlesDao.getArticles(country)
         listArticles.addSource(localData) {
             listArticles.value = it.toMutableList()
         }
@@ -75,8 +76,6 @@ class ArticlesRepository(
     }
 
     companion object {
-        private const val LOCAL_IDN = "id"
-
         @Volatile
         private var INSTANCE: ArticlesRepository? = null
         fun getInstance(

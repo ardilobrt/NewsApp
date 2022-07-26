@@ -8,6 +8,17 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="filterActivity">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="293" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="navigation_bookmark">
                     <value>
                       <LayoutPositions>
@@ -40,6 +51,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_navigation_home_to_filterActivity">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_navigation_home_to_signInActivity">
                               <value>
                                 <LayoutPositions />
@@ -61,6 +77,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_navigation_profile_to_navigation_home">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_navigation_profile_to_signInActivity">
                               <value>
                                 <LayoutPositions />

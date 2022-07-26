@@ -11,6 +11,7 @@ object SharedPrefManager {
     private const val KEY_TOKEN_USER = "user_token"
     private const val KEY_EMAIL = "user_email"
     private const val KEY_PASSWORD = "user_password"
+    private const val KEY_COUNTRY = "country"
 
     private fun getSharedPref(context: Context): SharedPreferences {
         return context.getSharedPreferences(SHARE_PREF_FILENAME, 0)
@@ -64,5 +65,15 @@ object SharedPrefManager {
 
     fun getPassword(context: Context) : String? {
         return getSharedPref(context).getString(KEY_PASSWORD, "")
+    }
+
+    fun setCountry(context: Context, value: String) {
+        val editor = getSharedPref(context).edit()
+        editor.putString(KEY_COUNTRY, value)
+        editor.apply()
+    }
+
+    fun getCountry(context: Context) : String? {
+        return getSharedPref(context).getString(KEY_COUNTRY, "id")
     }
 }
