@@ -14,6 +14,7 @@
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/drawable/ic_title_background.xml" value="0.1145" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout-v23/item_news.xml" value="0.25" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_detail_news.xml" value="0.25" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_filter.xml" value="0.153125" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_media.xml" value="0.153125" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_on_boarding.xml" value="0.153125" />
@@ -22,6 +23,8 @@
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_video_from_internet.xml" value="0.153125" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_video_raw.xml" value="0.153125" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/activity_web.xml" value="0.1675929884566054" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.153125" />
+        <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/dialog_bottom_sheet.xml" value="0.153125" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/fragment_authorized.xml" value="0.1675929884566054" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/fragment_bookmark.xml" value="0.1675929884566054" />
         <entry key="..\:/Android_Dev/Projects/NewsApp/app/src/main/res/layout/fragment_home.xml" value="0.18" />
