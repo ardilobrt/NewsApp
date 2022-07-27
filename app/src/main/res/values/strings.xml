@@ -35,4 +35,8 @@
     <string name="empty_bookmark" translatable="false">Please Set Bookmark from Articles</string>
     <string name="play_media" translatable="false">Play Media</string>
     <string name="log_out" translatable="false">Log Out</string>
+    <string name="indonesia" translatable="false">INDONESIA</string>
+    <string name="usa" translatable="false">USA</string>
+    <string name="filter_by_country" translatable="false">Filter by Country</string>
+    <string name="title_activity_filter" translatable="false">FilterActivity</string>
 </resources>

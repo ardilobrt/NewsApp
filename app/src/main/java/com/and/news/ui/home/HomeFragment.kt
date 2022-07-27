@@ -18,10 +18,9 @@ import com.and.news.databinding.FragmentHomeBinding
 import com.and.news.ui.detail.DetailNewsActivity
 import com.and.news.utils.MyCompanion
 import com.and.news.utils.SharedPrefManager
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.chip.Chip
+import kotlinx.coroutines.*
 
 class HomeFragment : Fragment() {
 
@@ -29,7 +28,9 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var factory: HomeViewModelFactory
     private lateinit var articlesAdapter: ArticlesAdapter
+    private var country: String? = null
     private val viewModel: HomeViewModel by viewModels { factory }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,11 +77,14 @@ class HomeFragment : Fragment() {
             }
         })
 
+        binding.chipFilter.setOnClickListener {
+            setBottomDialogSheet()
+        }
     }
 
     private fun observerValue() {
-
         factory = HomeViewModelFactory.getInstance(requireActivity())
+
         viewModel.listArticles.observe(viewLifecycleOwner) { result ->
             binding.progressBar.visibility = View.GONE
             articlesAdapter.submitList(result.toMutableList())
@@ -100,7 +104,7 @@ class HomeFragment : Fragment() {
                 lifecycleScope.launch {
                     delay(2000)
                     withContext(Dispatchers.Main) {
-                        viewModel.getArticles()
+                        viewModel.getArticles(country.toString())
                         binding.rvNews.apply {
                             layoutManager = LinearLayoutManager(context)
                             setHasFixedSize(true)
@@ -113,15 +117,36 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.getArticles()
-        binding.progressBar.visibility = View.VISIBLE
+    private fun setBottomDialogSheet() {
+        val dialog = BottomSheetDialog(requireActivity())
+        val view = layoutInflater.inflate(R.layout.dialog_bottom_sheet, null)
+        val chipIdn: Chip = view.findViewById(R.id.chip_idn)
+        val chipUsa: Chip = view.findViewById(R.id.chip_usa)
+
+        chipIdn.setOnClickListener {
+            setCountry("id")
+            dialog.dismiss()
+        }
+
+        chipUsa.setOnClickListener {
+            setCountry("us")
+            dialog.dismiss()
+        }
+
+        dialog.setContentView(view)
+        dialog.show()
     }
 
-    override fun onResume() {
-        super.onResume()
-        binding.edtSearch.clearFocus()
+    private fun setCountry(country: String) {
+        SharedPrefManager.setCountry(requireActivity(), country)
+        viewModel.getArticles(country)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        country = SharedPrefManager.getCountry(requireActivity())
+        binding.progressBar.visibility = View.VISIBLE
+        viewModel.getArticles(country.toString())
     }
 
     override fun onDestroyView() {

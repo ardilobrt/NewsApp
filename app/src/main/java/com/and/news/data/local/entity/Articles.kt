@@ -26,6 +26,9 @@ class Articles(
     @field:ColumnInfo(name = "url")
     val url: String,
 
+    @field:ColumnInfo(name = "country")
+    val country: String,
+
     @field:ColumnInfo(name = "isBookmarked")
     var isBookmarked: Boolean
 ) : Parcelable

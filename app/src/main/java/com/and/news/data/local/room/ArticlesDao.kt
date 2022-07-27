@@ -6,8 +6,8 @@ import com.and.news.data.local.entity.Articles
 
 @Dao
 interface ArticlesDao {
-    @Query("SELECT * FROM articles ORDER BY publishedAt DESC")
-    fun getArticles(): LiveData<List<Articles>>
+    @Query("SELECT * FROM articles WHERE country = :country ORDER BY publishedAt DESC")
+    fun getArticles(country: String): LiveData<List<Articles>>
 
     @Query("SELECT * FROM articles WHERE isBookmarked = 1")
     fun getBookmarkedArticles(): LiveData<List<Articles>>
