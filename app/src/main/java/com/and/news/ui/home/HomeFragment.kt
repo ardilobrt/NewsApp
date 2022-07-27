@@ -147,7 +147,6 @@ class HomeFragment : Fragment() {
         country = SharedPrefManager.getCountry(requireActivity())
         binding.progressBar.visibility = View.VISIBLE
         viewModel.getArticles(country.toString())
-        Toast.makeText(requireContext(), "On Start", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

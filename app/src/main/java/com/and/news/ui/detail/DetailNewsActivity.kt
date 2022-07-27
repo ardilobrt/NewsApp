@@ -9,7 +9,6 @@ import com.and.news.R
 import com.and.news.data.local.entity.Articles
 import com.and.news.utils.MyCompanion
 import com.and.news.utils.MyCompanion.loadImageDetail
-import com.and.news.data.remote.model.ArticlesItem
 import com.and.news.databinding.ActivityDetailNewsBinding
 
 class DetailNewsActivity : AppCompatActivity() {

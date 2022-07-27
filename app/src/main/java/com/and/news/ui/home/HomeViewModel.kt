@@ -1,6 +1,5 @@
 package com.and.news.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.and.news.data.Event
